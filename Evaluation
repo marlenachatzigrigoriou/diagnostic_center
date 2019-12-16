@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
+
+public class Evaluation {
+
+		static ArrayList<String> questions = new ArrayList<String>();
+		protected static int[][] sums = new int[10][2];
+		private static int ans,i;
+		static ArrayList<String> questions2 = new ArrayList<String>();
+		protected static int[][] sums2 = new int[5][2];
+		private static String ans2;
+		//αξιολόγηση του κέντρου
+		public static void evaluate() {
+			boolean continueLoop = false;
+			i = 0;
+			for (String q : questions) {
+				do { //επανάλαβε όσο παράγονται εξαιρέσεις για αυτό που εισάγει ο χρήστης
+					try {
+						ans = 0;
+						System.out.println(q);
+						System.out.println("Δώστε απάντηση 1-5 διαβαθμισμένα");
+						ans = wannabeMain.in.nextInt();
+						
+						if (ans != 0) {
+							sums[i][0]+=ans;
+							sums[i][1]++;
+						}
+						i++;
+						continueLoop = true; //εφόσον έφτασε εδώ το πρόγραμμα δεν παράχθηκε εξαίρεση αρα θέλουμε να συνεχίσει στην επόμενη ερώτηση
+					}
+				 	catch (InputMismatchException i) {
+				 		JOptionPane.showMessageDialog(null, "Παρακαλώ πληκτρολογείστε ακέραιο 1-5", "Error message", JOptionPane.ERROR_MESSAGE);
+				 		wannabeMain.in.nextLine();
+				 	}
+				} while (!continueLoop);
+			}
+		}
+		//θα αξιολογήσει την εμπειρία του από το κλείσιμο ενός ραντεβού
+		public static void evaluateProcedure() {
+			boolean continueLoop = false;
+			
+			for (int q = 0; q < questions2.size(); q++) {
+				do {
+					try {
+					
+						ans2 = null;
+						System.out.println(questions2.get(q));
+						System.out.println("Απαντήστε με ΝΑΙ ή ΟΧΙ");
+						ans2 = wannabeMain.in.nextLine();
+						if (ans2.equals(null)) {
+							break;
+						} else {
+							if (ans2.toLowerCase().indexOf("ν") != -1) {
+								sums[q][0]++;
+							} else {
+								sums[q][1]++;
+							}	
+						}
+						continueLoop = true;
+						
+					} catch (InputMismatchException i) {
+				 		JOptionPane.showMessageDialog(null, "Παρακαλώ πληκτρολογείστε NAI/OXI", "Error message", JOptionPane.ERROR_MESSAGE);
+				 		wannabeMain.in.nextLine();
+					}
+				} while (!continueLoop);
+			}
+		}	
+		
+
+}
