@@ -1,0 +1,348 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+public class DeleteAndChange {
+
+		static Scanner sc = new Scanner(System.in);
+		
+		public static int[] deleteQuestions() { // ΕΙΣΑΓΩΓΗ ΚΩΔ ΕΠΙΒΕΒ. ΚΑΙ ΗΜΕΡΟΜΗΝΙΑ
+			
+			int [] del = new int[3];
+ 			
+			System.out.println("Επιλέξατε να διαγράψετε κάποιο ήδη καταχωρημένο ραντεβού σας!");
+			System.out.println("Παρακαλώ εισάγετε τον κωδικο επιβεβαιωσης και την ημερομηνία του ραντεβού σας!");
+			System.out.println("Μήνας:");
+			
+			try {
+				int month = sc.nextInt();
+				del[0] = month;
+				System.out.println("Ημέρα:");
+				int day = sc.nextInt();
+				del[1] = day;
+				System.out.println("Κωδικος:");
+				int validcode = sc.nextInt();
+				del[2] = validcode;
+				
+			} catch (InputMismatchException e1) {
+				
+				System.out.println("you should insert the correct type of info");
+			
+			} catch (ArrayIndexOutOfBoundsException e2) {
+				System.out.println("you have an error.");
+				
+			}
+			return del;
+			
+		}
+
+		
+		// αρα εδω παιρνεις ως ορισματα ένα ενα τα κελια του del --> γιατι όχι ολο τον  del κατευθείαν 
+		//και μέσα στην μεθοδο να παιρνεις το 0 ή 1 κλπ ;;;;;
+		public static void cancelTable(int month, int day, int j, int cell, int k_value, Table[][] calendar) { 
+
+			boolean exists = true;
+			int k = k_value;
+			do { // WHILE LOOP PUTS "NO" INSIDE THE CELLS THAT CONATINS CLIENT'S VALIDCODE
+				
+				try {
+					if (calendar[month][day].getTable()[k][j].toLowerCase().contains(String.valueOf(cell))) {
+	
+						calendar[month][day].getTable()[k][j] = "ΟΧΙ";
+						k++;
+					} else {
+						exists = false;
+					}
+					
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.out.println("you have an array error.");
+					
+				}//end of try/catch
+				
+			} while (exists == true);
+			
+		}
+		
+		
+		
+
+		public static String[] customerΙnfo(String stringcode, int[] del2, Table[][] calendar) {
+
+			boolean flag = false;
+			String[] info2 = new String[5];
+
+			String stringid = null;
+			int intid = 0;
+			
+			try {
+				for (int i = 1; i <= 16; i++) {
+					for (int y = 1; y <= Employees.employees.size(); y++) {
+						if (calendar[del2[0]][del2[1]].getTable()[i][y].toLowerCase().contains(stringcode)) {
+							stringid = calendar[del2[0]][del2[1]].getTable()[i][y]
+									.substring(calendar[del2[0]][del2[1]].getTable()[i][y].length() - 3);
+							// THE ABOVE LINE: SEPARATES ID FROM VALIDCODE
+	
+							intid = Integer.parseInt(stringid);
+							flag = true; //TURNS TRUE WHEN CLIENT IS SPOTTED
+							break;
+						}
+					}
+					if (flag == true) {
+						break;
+					}
+				}
+				for (int i = 0; i <= Client.clients.size(); i++) {
+					if (Client.clients.get(i).getId() == intid) {
+						info2[0] = Client.clients.get(i).getName();
+						info2[1] = Client.clients.get(i).getSurname();
+						String stringphone = String.valueOf(Client.clients.get(i).getPhoneNumber());
+						info2[2] = stringphone;
+					}
+				}
+				
+			} catch(ArrayIndexOutOfBoundsException e) {
+				
+				System.out.println("there is an array error.");
+			}
+			return info2;
+		}
+		
+
+		
+		public static void deleteAppointment(int[] del, Table[][] calendar) {
+
+			String answer = "OXI";
+			do {
+				boolean found = false;
+				
+				try {
+					for (int i = 1; i <= 16; i++) {
+	
+						for (int j = 0; j <= Employees.employees.size(); j++) {
+	
+							if (calendar[del[0]][del[1]].getTable()[i][j].toLowerCase()
+									.contains(String.valueOf(del[2]))) { 	// IF THE CODE ON TABLE IS THE SAME WITH THE CODE
+																			// THAT THE CLIENT INSERTS
+								found = true;
+								// FINDS HOW MANY CELLS OF TABLE TAKES UP THE APPOINTMENT
+	
+								cancelTable(del[0], del[1], j, del[2], i, calendar);
+							}
+						} // END INSIDE FOR
+					} // END OUTSIDE FOR
+					
+				} catch(ArrayIndexOutOfBoundsException e) {
+					
+					System.out.println("there is an array error.");
+				}
+				
+				try {
+					if (found == false) {
+						System.out.println("Δυστυχως δεν βρηκαμε καποιο "
+								+ "καταχωρημένο ραντεβού με τον κωδικό που εισάγατε. Θελετε να προσπαθήσετε ξανα;");
+						answer = sc.nextLine();
+					} else {
+						System.out.println("Το ραντεβού σας διεγράφη.");
+						answer = "OXI";
+					}
+				} catch (InputMismatchException e) {
+					System.out.println("you should insert the correct type of info.");
+				}
+
+			} while (answer == "NAI");
+		} // END OF METHOD
+
+		
+		
+		public static int[] changeQuestions() { // INSERTS VALIDCODE AND DATE
+			int[] del2 = new int[3];
+			
+			System.out.println("Επιλέξατε να αλλαξετε κάποιο ήδη καταχωρημένο ραντεβού σας!");
+			System.out.println("Παρακαλώ εισάγετε τον κωδικο επιβεβαιωσης και την ημερομηνία του παλαιου ραντεβού!");
+				
+			try {
+				System.out.println("Μήνας:");
+				int month = sc.nextInt();
+				del2[0] = month;
+				System.out.println("Ημέρα:");
+				int day = sc.nextInt();
+				del2[1] = day;
+				System.out.println("Κωδικος:");
+				int validcode = sc.nextInt();
+				del2[2] = validcode;
+			} catch (InputMismatchException e) {
+				
+				System.out.println("you should insert the correct type of info.");
+				
+			} catch (ArrayIndexOutOfBoundsException e1) {
+				System.out.println("there is an array error.");
+			}
+			return del2;
+			
+		}
+
+		
+		//δεν πρεπει να ειναι ο del static πεδιο για να τον βλεπει και αυτη η μεθοδος, αρκει να τον πάρει σαν ορισμα 
+		
+		
+		
+		
+		
+		
+	public static void changeAppointment(int del2[], int del[], Table[][] calendar) {
+		
+		String answer = null;
+		System.out.println(
+				"Για την μεταφορά του ραντεβού σας απαιτείται διαγραφή του ήδη υπάρχοντος. Ειστε βεβαιοι για την διαγραφη του προηγούμενου ραντεβου σας;");
+		
+		try {
+			answer = sc.nextLine();
+			
+		}catch (InputMismatchException e ) {
+			System.out.println("you should insert the correct type of info.");
+			
+		}
+
+		try {
+			if (answer.contains("ΝΑΙ")) {
+				deleteAppointment(del2, calendar); // DELETE OLD APPOINTMENT USING DELETION METHOD
+	
+				System.out.println("Για την μεταφορά του ραντεβού "
+						+ "σας επιθυμείτε να διατηρήσουμε τα ήδη υπάρχοντα στοιχεία του ραντεβού; \nΝΑΙ / ΟΧΙ");
+				String ans = sc.nextLine();
+	
+				String[] info = new String[3];
+				info = keepInfo(del2, calendar);
+	
+				if (ans.contains("NAI")) {
+	
+					String[] info2 = new String[5];
+					int exetasi_duration = keepInfoDuration(info[2], info[0]);
+	
+					info2 = customerΙnfo(String.valueOf(del[2]), del2, calendar); // FILLS THE FIRST 3 CELLS OF TABLE
+																					// WITH CLIENTs INFO
+	
+					info2[3] = info[0];
+					info2[4] = String.valueOf(exetasi_duration);
+	
+					String t1[] = new String[3];
+					t1[1] = info[2];
+					t1[2] = info[0];
+					t1[0] = "γιατρού";
+	
+					System.out.println("Θα θέλατε να διατηρήσετε τον ίδιο γιατρό και στο νέο σας ραντεβου;");
+	
+					String keep_doc = sc.next();
+	
+					if (keep_doc.equals("ΝΑΙ")) {
+	
+						EnterAppointment.basedOnDateAndEmp(t1, exetasi_duration, null, info[1], calendar);
+	
+					} else {
+	
+						EnterAppointment.basedOnDate(t1, exetasi_duration, calendar);
+	
+					}
+					
+				
+				
+
+				} else { // COMPLETELY NEW APPOINTMENT
+	
+					String[] t = EnterAppointment.questionsToBegin();
+	
+					int duration = EnterAppointment.choiceDuration(t);
+	
+					if (t[0].contains("1")) { // CHOOSE BASED ON DATE
+						EnterAppointment.basedOnDate(t, duration, calendar);
+	
+					} else { // BASED ON EMPLOYEE
+	
+						EnterAppointment.basedOnDateAndEmp(t, duration, "katachorisi", info[1], calendar);
+					}
+				} // END IF
+	
+			} else {
+	
+				// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				System.out.println("Το ραντεβού σας δεν διαγράφηκε");
+				//καλει μεθοδο που πηγαινει στο αρχικο μενου
+	
+			}
+			
+		} catch (InputMismatchException e1) {
+			
+			System.out.println("you should insert the correct type of info.");
+		
+		}catch (ArrayIndexOutOfBoundsException e2) {
+			
+			System.out.println("there is an array error.");
+		}
+
+	}
+		
+		public static String[] keepInfo(int[] del2, Table[][] calendar) {
+
+			String exetasi = null;
+			String doctor = null;
+			String eidikotita = null;
+			String[] info = new String[3];
+
+			try {
+				for (int i = 1; i <= 16; i++) {
+	
+					for (int j = 0; j <= Employees.employees.size(); j++) {
+	
+						if (calendar[del2[0]][del2[1]].getTable()[i][j].toLowerCase()
+								.contains(String.valueOf(del2[2]))) {// FIND THE APPOINTMENT ON TABLE
+	
+							exetasi = calendar[del2[0]][del2[1]].getTable()[i][j].substring(8); // NAME OF SERVICE
+																								// IN OLD APPOINTMENT
+							doctor = calendar[del2[0]][del2[1]].getTable()[0][j]; // NAME OF EMPLOYEE IN OLD APPOINTMENT
+							eidikotita = Employees.employees.get(j).getSpecialty(); // CATEGORY OF SERVICE IN OLD APPOINTMENT
+	
+							info[0] = exetasi;
+							info[1] = doctor;
+							info[2] = eidikotita;
+						} // END INSIDE IF
+	
+					} // END INSIDE FOR
+	
+				} // END OUTSIDE FOR
+				
+			} catch (ArrayIndexOutOfBoundsException e) {
+				
+				System.out.println("there is an array error.");
+			}
+
+			return info;
+
+		}// end of method ans1
+
+		
+		
+		public static int keepInfoDuration(String a, String b) {
+
+			int exetasi_duration = 0;
+
+			for (int i = 0; i < Services.eidikotitesoles.size(); i++) {
+				if (Services.eidikotitesoles.get(i).equals(a)) { // SERVICE BELONGS AT THIS CERTAIN SUBLIST 
+																	// for example AIMATOLOGIKES
+					for (int j = 0; j < Services.eidikotitesoles.get(i).size(); j++) {
+
+						if (b.equals(Services.eidikotitesoles.get(i).get(j).getName())) { // FIND THE SERVICE AT
+																							// THE LIST
+							exetasi_duration = Services.eidikotitesoles.get(i).get(j).getDuration();
+						}
+					} // END INSIDE FOR
+				}
+			} // END OUTSIDE FOR
+			return exetasi_duration;
+		}// end of method ans1duration
+	
+
+
+}// END OF CLASS
+
+
+
