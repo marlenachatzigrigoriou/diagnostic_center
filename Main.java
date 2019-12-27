@@ -3,13 +3,17 @@
  */
 package ergasia2;
 
+import java.util.Scanner;
+
 /**
  * @author HP
  *
  */
 public class Main {
 
-	public static void loadObjects(Table[][] calendar) { // CREATE Services, Employees, Calendar(type: Table)
+	public static Scanner sc = new Scanner(System.in);
+
+	public static void loadObjects(Table[][] calendar, String path) { // CREATE Services, Employees, Calendar(type: Table)
 		
 		Services.listEidikotites();
 		Services.addAllServices();
@@ -21,13 +25,15 @@ public class Main {
 			while (err) {
 				try {
 					CreateObjects.createServices(
-							"C:\\Users\\HP\\Desktop\\java2_\\exe2\\" + Services.eidikotites.get(i) + ".txt");
+							path + Services.eidikotites.get(i) + ".txt");
 					err = false;
-					System.out.println(err);
 				} catch (NumberFormatException e) {
 					System.err.println("Λάθος καταχωρημένο στοιχείο στo αρχείo " + Services.eidikotites.get(i)
 							+ " που χρησιμοποιήσατε!");
-				}
+					System.err.println("Διορθώστε το αρχείο και επανεισάγετέ το!");
+					path = sc.nextLine();
+				} 
+				
 			}
 		}
 
