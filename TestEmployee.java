@@ -8,10 +8,11 @@ import org.junit.After;
 import org.junit.Test;
 
 
-public class TestEmployee {
+public class TestEmployees {
 	
 	
 	
+		
 	private ArrayList <Employees>employees =new ArrayList<Employees>() ;
 	private Employees e1 = new Employees("Mark Smith", "aimatologikes");
 	private Employees e2 = new Employees("Tom Adams", "checkup");
@@ -62,6 +63,13 @@ public class TestEmployee {
 	
 	}
 	
+	@Test
+	public void testChangeEmployees() {
+		Services.listEidikotites();
+		Employees.changeEmployees();
+		
+		
+	}
 	
 	
 	@After
