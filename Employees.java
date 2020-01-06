@@ -1,4 +1,4 @@
-package polyiatrio;
+package javaTest;
 
 import java.util.ArrayList;
 /**
@@ -23,8 +23,8 @@ public class Employees {
 
 	public static void changeEmployees() {
 
-		System.out.println("(1)Ξ Ξ΅ΞΞ£ΞΞ—ΞΞ— ΞΞ•ΞΞ¥ Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ \n\n(2)Ξ”Ξ™Ξ‘Ξ“Ξ΅Ξ‘Ξ¦Ξ— Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ "
-				+ "\n\n(3)Ξ¤Ξ΅ΞΞ ΞΞ ΞΞ™Ξ—Ξ£Ξ— Ξ£Ξ¤ΞΞ™Ξ§Ξ•Ξ™Ξ©Ξ Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ \n\n(ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ 1, 2 Ξ® 3) "
+		System.out.println("(1)ΠΡΟΣΘΗΚΗ ΝΕΟΥ ΥΠΑΛΛΗΛΟΥ \n\n(2)ΔΙΑΓΡΑΦΗ ΥΠΑΛΛΗΛΟΥ "
+				+ "\n\n(3)ΤΡΟΠΟΠΟΙΗΣΗ ΣΤΟΙΧΕΙΩΝ ΥΠΑΛΛΗΛΟΥ \n\n(επιλέξτε 1, 2 ή 3) "
 				+ "\n-------------------------------------");
 		String ansemp = Main.in.next();
 		
@@ -32,12 +32,12 @@ public class Employees {
 
 			if (ansemp.contains("1")) {
 				
-				System.out.println("Ξ•ΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ο„ΞΏΟ… Ξ½Ξ­ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ…\n");
-				System.out.println("ΞΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ:");
+				System.out.println("Εισάγεται τα στοιχεία του νέου υπαλλήλου\n");
+				System.out.println("Ονοματεπόνυμο:");
 				Main.in.nextLine();
 				String ename1 = Main.in.nextLine();
 				
-				System.out.println("Ξ•ΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ±:");
+				System.out.println("Ειδικότητα:");
 				String especialty1 = Main.in.nextLine();
 				boolean fl = true;
 
@@ -49,7 +49,7 @@ public class Employees {
 					}
 					if (fl) {
 						System.out.println(
-								"Ξ ΟΞ­Ο€ΞµΞΉ Ξ· ΞµΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ… Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚ Ξ®Ξ΄Ξ· Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…ΟƒΞµΟ‚!! \nΞ”Ξ·Ξ»Ξ±Ξ΄Ξ® ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚:");
+								"Πρέπει η ειδικότητα του υπαλλήλου να είναι μία απο τις ήδη υπάρχουσες!! \nΔηλαδή μία απο τις:");
 						for (int u = 0; u < Services.eidikotites.size(); u++) {
 							System.out.println(Services.eidikotites.get(u));
 						}
@@ -59,7 +59,7 @@ public class Employees {
 				
 				Employees emp1 = new Employees(ename1, especialty1);
 				Employees.listEmployees(emp1);
-				System.out.println("Ξ Ο…Ο€Ξ¬Ξ»Ξ»Ξ·Ξ»ΞΏΟ‚ ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ®ΞΈΞ·ΞΊΞµ!");
+				System.out.println("Ο υπάλληλος καταχωρήθηκε!");
 				break;
 
 			} else if (ansemp.contains("3")) {
@@ -67,7 +67,7 @@ public class Employees {
 				ArrayList<String> docs1 = new ArrayList<String>();
 				ArrayList<Integer> docsnum = new ArrayList<Integer>();
 
-				System.out.println("Ξ•ΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ Ο„Ξ·Ξ½ ΞµΞΉΞ΄ΞΊΟΟ„Ξ·Ο„Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ… Ο€ΞΏΟ… ΞΈΞ­Ξ»ΞµΟ„Ξµ Ξ½Ξ± Ο„ΟΞΏΟ€ΞΏΟ€ΞΏΞΉΞ®ΟƒΞµΟ„Ξµ:\n");
+				System.out.println("Εισάγεται την ειδκότητα του υπαλλήλου που θέλετε να τροποποιήσετε:\n");
 				for (int t = 0; t < Services.eidikotites.size(); t++) {
 					System.out.println(Services.eidikotites.get(t));
 				}
@@ -76,7 +76,7 @@ public class Employees {
 				Main.in.nextLine();
 				String especialty1 = Main.in.nextLine();
 				
-				System.out.println("Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ±Ο€ΞΏ Ο„ΞΏΟ…Ο‚ Ο€Ξ±ΟΞ±ΞΊΞ¬Ο„Ο‰ Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ…Ο‚:");
+				System.out.println("Επιλέξτε απο τους παρακάτω υπαλλήλους:");
 
 				for (int p = 0; p < Employees.employees.size(); p++) {
 					if (Employees.employees.get(p).getSpecialty().equals(especialty1)) {
@@ -96,10 +96,10 @@ public class Employees {
 					}
 				}
 
-				System.out.println("Ξ•ΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ Ο„Ξ± ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ…\n");
-				System.out.println("ΞΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ:");
+				System.out.println("Εισάγεται τα καινούρια στοιχεία του υπαλλήλου\n");
+				System.out.println("Ονοματεπόνυμο:");
 				String enamenew = Main.in.nextLine();
-				System.out.println("Ξ•ΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ±:");
+				System.out.println("Ειδικότητα:");
 				String especialtynew = Main.in.nextLine();
 
 				boolean fl = true;
@@ -111,7 +111,7 @@ public class Employees {
 					}
 					if (fl) {
 						System.out.println(
-								"Ξ ΟΞ­Ο€ΞµΞΉ Ξ· ΞµΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ… Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚ Ξ®Ξ΄Ξ· Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…ΟƒΞµΟ‚!! \nΞ”Ξ·Ξ»Ξ±Ξ΄Ξ® ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚:");
+								"Πρέπει η ειδικότητα του υπαλλήλου να είναι μία απο τις ήδη υπάρχουσες!! \nΔηλαδή μία απο τις:");
 						for (int u = 0; u < Services.eidikotites.size(); u++) {
 							System.out.println(Services.eidikotites.get(u));
 						}
@@ -121,18 +121,18 @@ public class Employees {
 
 				Employees.employees.get(thesi).setEmp_name(enamenew);
 				Employees.employees.get(thesi).setSpecialty(especialtynew);
-				System.out.println("Ξ¤Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± ΞµΞ―Ξ½Ξ±ΞΉ ΞµΞ½Ξ·ΞΌΞµΟΟ‰ΞΌΞ­Ξ½Ξ±!");	
+				System.out.println("Τα στοιχεία είναι ενημερωμένα!");	
 				
 				break;
 
 			} else if (ansemp.contains("2")) {
 
-				System.out.println("Ξ•ΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ…\n");
-				System.out.println("ΞΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ:");
+				System.out.println("Εισάγεται τα στοιχεία του υπαλλήλου\n");
+				System.out.println("Ονοματεπόνυμο:");
 				Main.in.nextLine();
 				String ename1 = Main.in.nextLine();
 
-				System.out.println("Ξ•ΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ±:");
+				System.out.println("Ειδικότητα:");
 				String especialty1 = Main.in.nextLine();
 
 				boolean fl = true;
@@ -145,7 +145,7 @@ public class Employees {
 					}
 					if (fl) {
 						System.out.println(
-								"Ξ ΟΞ­Ο€ΞµΞΉ Ξ· ΞµΞΉΞ΄ΞΉΞΊΟΟ„Ξ·Ο„Ξ± Ο„ΞΏΟ… Ο…Ο€Ξ±Ξ»Ξ»Ξ®Ξ»ΞΏΟ… Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚ Ξ®Ξ΄Ξ· Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…ΟƒΞµΟ‚!! \nΞ”Ξ·Ξ»Ξ±Ξ΄Ξ® ΞΌΞ―Ξ± Ξ±Ο€ΞΏ Ο„ΞΉΟ‚:");
+								"Πρέπει η ειδικότητα του υπαλλήλου να είναι μία απο τις ήδη υπάρχουσες!! \nΔηλαδή μία απο τις:");
 						for (int u = 0; u < Services.eidikotites.size(); u++) {
 							System.out.println(Services.eidikotites.get(u));
 						}
@@ -164,25 +164,25 @@ public class Employees {
 				}
 				
 				if (thesi1 == 0) {
-					System.out.println("Ξ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ο„Ξ­Ο„ΞΏΞΉΞΏΟ‚ Ο…Ο€Ξ¬Ξ»Ξ»Ξ·Ξ»ΞΏΟ‚! \nΞ•Ξ»Ξ­Ξ³ΞΎΟ„Ξµ Ο„ΞΏ ΞΏΞ½ΞΏΞΌΞ±Ο„ΞµΟ€ΟΞ½Ο…ΞΌΞΏ!");
+					System.out.println("Δεν υπάρχει τέτοιος υπάλληλος! \nΕλέγξτε το ονοματεπώνυμο!");
 				} else {
-					System.out.println("Ξ Ο…Ο€Ξ¬Ξ»Ξ»Ξ·Ξ»ΞΏΟ‚ ΞΈΞ± Ξ΄ΞΉΞ±Ξ³ΟΞ±Ο†ΞµΞ―! \nΞΞ‘Ξ™ / ΞΞ§Ξ™");
+					System.out.println("Ο υπάλληλος θα διαγραφεί! \nΝΑΙ / ΟΧΙ");
 					String eans = Main.in.next();
 
-					if (eans.contains("ΞΞ‘Ξ™")) {
+					if (eans.contains("ΝΑΙ")) {
 						Employees.employees.get(thesi1).setEmp_name(" ");
 						Employees.employees.get(thesi1).setSpecialty(" ");
 					} else {
-						System.out.println("Ξ Ο…Ο€Ξ¬Ξ»Ξ»Ξ·Ξ»ΞΏΟ‚ Ξ΄ΞµΞ½ Ξ΄ΞΉΞµΞ³ΟΞ¬Ο†Ξ·!");
+						System.out.println("Ο υπάλληλος δεν διεγράφη!");
 					}
 				}
 				break;
 				
 			} else {
 				
-				System.out.println("!!ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ 1, 2 Ξ® 3!!\n");
-				System.out.println("(1)Ξ Ξ΅ΞΞ£ΞΞ—ΞΞ— ΞΞ•ΞΞ¥ Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ \n\n(2)Ξ”Ξ™Ξ‘Ξ“Ξ΅Ξ‘Ξ¦Ξ— Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ "
-						+ "\n\n(3)Ξ¤Ξ΅ΞΞ ΞΞ ΞΞ™Ξ—Ξ£Ξ— Ξ£Ξ¤ΞΞ™Ξ§Ξ•Ξ™Ξ©Ξ Ξ¥Ξ Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¥ \n\n(ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ 1, 2 Ξ® 3) "
+				System.out.println("!!επιλέξτε 1, 2 ή 3!!\n");
+				System.out.println("(1)ΠΡΟΣΘΗΚΗ ΝΕΟΥ ΥΠΑΛΛΗΛΟΥ \n\n(2)ΔΙΑΓΡΑΦΗ ΥΠΑΛΛΗΛΟΥ "
+						+ "\n\n(3)ΤΡΟΠΟΠΟΙΗΣΗ ΣΤΟΙΧΕΙΩΝ ΥΠΑΛΛΗΛΟΥ \n\n(επιλέξτε 1, 2 ή 3) "
 						+ "\n-------------------------------------");
 				ansemp = Main.in.next();
 			}
