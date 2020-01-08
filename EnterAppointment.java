@@ -1,67 +1,46 @@
-package ergasia2;
-
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 public class EnterAppointment {
 
 	static Scanner m = new Scanner(System.in);
-
+    static JFrame frame;
 	public static String[] questionsToBegin() {
 
 		String[] t1 = new String[3];
 		boolean found = false;
-		String search = null;
 
-		String eidikotita = Menu.chooseService(); // διαλέγει ειδικότητα
+		String eidikotita = Menu.chooseService();
 		t1[1] = eidikotita;
-		System.out.println("Αναζήτηση");
-		boolean inserted = false;
-
-		while (inserted == false) {
-			try {
-				search = m.nextLine();// πληκτρολογεί στην αναζήτηση
-				inserted = true;
-			} catch (InputMismatchException e) {
-				System.out.println("insert the required info.");
-			}
-		}
-
+		/*System.out.println("Ξ‘Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞ·:");
+		String search = m.next();
+		*/
+		String search = JOptionPane.showInputDialog(frame,"Ξ‘Ξ½Ξ±Ξ¶Ξ·Ο„Ξ®ΟƒΟ„Ξµ Ο„Ξ·Ξ½ ΞµΞΎΞ­Ο„Ξ±ΟƒΞ· Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ \n"
+				+ "(ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ ΞΞ›Ξ•Ξ£ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ ΞµΞΊΟ„ΟΟ€Ο‰ΟƒΞ· ΟΞ»Ο‰Ξ½ Ο„Ο‰Ξ½ ΞµΞΎΞµΟ„Ξ¬ΟƒΞµΟ‰Ξ½ Ο„Ξ·Ο‚ ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±Ο‚):");
 		do {
 			if (Menu.filterAndPrintServices(search, eidikotita) == false) {
-				System.out.println("Είστε βέβαιοι ότι επιθυμείτε την υπηρεσία: " + eidikotita + ";");
-				String a = null;
-				boolean correct = false;
-
-				while (correct == false) {
-					try {
-						a = m.next();
-						correct = true;
-					} catch (InputMismatchException e) {
-						System.out.println("εισαγετε ναι ή οχι.");
-					}
-				}
-
-				correct = false;
-
-				while (correct == false) {
-					try {
-						if (a.contains("ναι")) {
-							System.out.println("Αναζήτηση");
-							search = m.nextLine();// πληκτρολογεί στην αναζήτηση
-							correct = true;
-						} else {
-							eidikotita = Menu.chooseService(); // διαλέγει ειδικότητα
-							t1[1] = eidikotita;
-							System.out.println("Αναζήτηση");
-							search = m.nextLine();
-							correct = true;
-						}
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
+				/*System.out.println("Ξ•Ξ―ΟƒΟ„Ξµ Ξ²Ξ­Ξ²Ξ±ΞΉΞΏΞΉ ΟΟ„ΞΉ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ Ο„Ξ·Ξ½ Ο…Ο€Ξ·ΟΞµΟƒΞ―Ξ±: " + eidikotita + ";\n"
+						+ "*Ξ½Ξ±ΞΉ (Ξ½Ξ­Ξ± Ο€ΟΞΏΟƒΟ€Ξ¬ΞΈΞµΞΉΞ± Ξ³ΞΉΞ± Ξ±Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞ· ΞµΞΎΞ­Ο„Ξ±ΟƒΞ·Ο‚)\n*ΟΟ‡ΞΉ (Ξ½Ξ­Ξ± ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±Ο‚ ΞµΞΎΞµΟ„Ξ¬ΟƒΞµΟ‰Ξ½)");
+				String a = m.next();*/
+				
+				String a = JOptionPane.showInputDialog(frame,"Ξ•Ξ―ΟƒΟ„Ξµ Ξ²Ξ­Ξ²Ξ±ΞΉΞΏΞΉ ΟΟ„ΞΉ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ Ο„Ξ·Ξ½ Ο…Ο€Ξ·ΟΞµΟƒΞ―Ξ±: " + eidikotita 
+						  +"\r\n *Ξ½Ξ±ΞΉ (Ξ½Ξ­Ξ± Ο€ΟΞΏΟƒΟ€Ξ¬ΞΈΞµΞΉΞ± Ξ³ΞΉΞ± Ξ±Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞ· ΞµΞΎΞ­Ο„Ξ±ΟƒΞ·Ο‚)"
+						  +"\r\n *ΟΟ‡ΞΉ (Ξ½Ξ­Ξ± ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±Ο‚ ΞµΞΎΞµΟ„Ξ¬ΟƒΞµΟ‰Ξ½)");
+						
+				if (a.contains("Ξ½Ξ±ΞΉ")) {
+					/*System.out.println("Ξ‘Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞ·:");
+					search = m.next();*/
+					search = JOptionPane.showInputDialog(frame,"Ξ‘Ξ½Ξ±Ξ¶Ξ·Ο„Ξ®ΟƒΟ„Ξµ Ο„Ξ·Ξ½ ΞµΞΎΞ­Ο„Ξ±ΟƒΞ· Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ \n"
+							+ "(ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ ΞΞ›Ξ•Ξ£ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ ΞµΞΊΟ„ΟΟ€Ο‰ΟƒΞ· ΟΞ»Ο‰Ξ½ Ο„Ο‰Ξ½ ΞµΞΎΞµΟ„Ξ¬ΟƒΞµΟ‰Ξ½ Ο„Ξ·Ο‚ ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±Ο‚):");
+				} else {
+					eidikotita = Menu.chooseService();
+					t1[1] = eidikotita;
+					/*System.out.println("Ξ‘Ξ½Ξ±Ξ¶Ξ®Ο„Ξ·ΟƒΞ·:");
+					search = m.next();*/
+					search = JOptionPane.showInputDialog(frame,"Ξ‘Ξ½Ξ±Ξ¶Ξ·Ο„Ξ®ΟƒΟ„Ξµ Ο„Ξ·Ξ½ ΞµΞΎΞ­Ο„Ξ±ΟƒΞ· Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ \n"
+							+ "(ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ ΞΞ›Ξ•Ξ£ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ ΞµΞΊΟ„ΟΟ€Ο‰ΟƒΞ· ΟΞ»Ο‰Ξ½ Ο„Ο‰Ξ½ ΞµΞΎΞµΟ„Ξ¬ΟƒΞµΟ‰Ξ½ Ο„Ξ·Ο‚ ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±Ο‚):");
 				}
 
 			} else {
@@ -69,48 +48,31 @@ public class EnterAppointment {
 			}
 		} while (!found);
 
-		// βγαίνει λίστα με τα αποτελέσματα
-		// της αναζήτησης του
 		//m.nextLine();
-		String choice = null;
-		boolean correct = false;
-
-		while (correct == false) {
-			try {
-				choice = m.nextLine();// διαβάζουμε τη τελική του επιλογή υπηρεσίας
-				correct = true;
-
-			} catch (InputMismatchException e) {
-				System.out.println("insert the required info.");
-			}
-		}
-
+		/*String choice = m.nextLine();*/
+		String choice=JOptionPane.showInputDialog(frame,"Ξ•ΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ·Ξ½ ΞµΞΎΞ­Ο„Ξ±ΟƒΞ· (Ξ±Ο€Ο ΟΟƒΞµΟ‚ Ξ±Ξ½Ξ±Ο†Ξ­ΟΞΈΞ·ΞΊΞ±Ξ½\n Ο€ΟΞΏΞ·Ξ³ΞΏΟ…ΞΌΞ­Ξ½Ο‰Ο‚) Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ:");
 		t1[2] = choice;
 
-		String ans = Menu.chooseCriterion(); // διαβάζουμε το κρητίριο
+		String ans = Menu.chooseCriterion(); 
 		t1[0] = ans;
+		
 		return t1;
 	}
 
-	public static double [] choiceDuration(String[] t1) {
+	
+	public static double[] choiceDuration(String[] t1) {
 
-
-		double duration [] = new double[2];
+		double[] duration = new double[2];
 
 		for (int j = 0; j < 22; j++) {
-			
+
 			if (t1[1].toLowerCase().contains(Services.eidikotites.get(j))) {
-				
+
 				for (int i = 0; i < Services.eidikotitesoles.get(j).size(); i++) {
-					//System.out.println(Services.eidikotitesoles.get(j).get(i).getName());
-					//System.out.println(t1[2]);
-					//boolean b = Services.eidikotitesoles.get(j).get(i).getName().contains(t1[2]);
-					//System.out.println(b);
+
 					if (Services.eidikotitesoles.get(j).get(i).getName().contains(t1[2])) {
-						//System.out.println("wsdcsaxc");
 						duration[0] = Services.eidikotitesoles.get(j).get(i).getDuration();
 						duration[1] = Services.eidikotitesoles.get(j).get(i).getCost();
-						//System.out.println(duration[0] + "+"  + duration[1]);
 						break;
 					}
 				}
@@ -118,187 +80,171 @@ public class EnterAppointment {
 		}
 		return duration;
 	}
+		
+	public static void basedOnDate(String[] t1, double[] duration, Table[][] calendar, String kat) { // BASED ON DATE
+																							
 
-	public static void basedOnDate(String[] t1, double [] duration, Table[][] calendar) { // ΒΑΣΗ ΗΜΕΡΟΜΗΝΙΑΣ--> ans == "1"
 		Random rand = new Random();
 		int validcode = 0;
-		String stringid = null;
-		String stringvalidcode = null;
-		String stringcode = null;
+		String stringid = "";
+		String stringvalidcode = "";
+		String stringcode = "";
 		String eidikotita = t1[1];
-		String anstime = "ΑΛΛΟ";
-		int exists = 0;
+		String anstime = "Ξ‘Ξ›Ξ›Ξ";
+		String[][] data = new String[16][2];
 		String protasi = "no protasi";
 		int day = 0;
 		int month = 0;
+		int existsnew = 0;
+		double totalcells;
+		int hours = 0;
+		while ((anstime.toLowerCase().contains("Ξ‘Ξ›Ξ›Ξ")) || (existsnew == 0)) { // ΟΞ¬Ο‡Ξ½Ο‰ ΞΌΞ­Ο‡ΟΞΉ Ξ½Ξ± Ξ²ΟΟ‰ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ ΞΞ‘Ξ™
+																				// ΞΌΞ­Ο‡ΟΞΉ
+																				// ΞΊΞ¬Ο€ΞΏΞΉΞ± Ξ±Ο€ΞΏ Ξ±Ο…Ο„Ξ­Ο‚ Ξ½Ξ± Ξ²ΞΏΞ»ΞµΟΞµΞΉ Ο„ΞΏΞ½
+																				// Ο€ΞµΞ»Ξ¬Ο„Ξ·
+																				// ΞΌΞ±Ο‚
+			String md[][] = new String[18][2];
 
-		while ((anstime.toLowerCase().contains("ΑΛΛΟ")) || (exists == 0)) { // ψάχνω μέχρι να βρω διαθέσιμες ώρες ΚΑΙ
-																			// μέχρι
-																			// κάποια απο αυτές να βολεύει τον πελάτη
-																			// μας
-			int md[] = new int[3];
-			if (protasi.contains("ΠΡΟΤΑΣΗ")) {
+			if (protasi.contains("Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—")) { // A SUGGESTION
+
 				md = suggestion(month, day, eidikotita, duration[0], calendar);
-				day = md[1];
-				month = md[0];
-				exists = md[2];
-			} else {
-				System.out.println("Παρακαλώ εισάγετε την ημερομηνία που επιθυμείτε");
-				System.out.println("Μήνας: ");
-				boolean ok2 = false;
-
-				while (ok2 == false) {// each variable checks if month and day are inserted correctly
-					try {
-						month = m.nextInt();
-						System.out.println("Ημέρα: ");
-						day = m.nextInt();
-						ok2 = true;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
+				day = Integer.parseInt(md[1][0]);
+				month = Integer.parseInt(md[0][0]);
+				for (int o = 2; o < 18; o++) {
+					data[o - 2][0] = md[o][0];
+					data[o - 2][1] = md[o][1];
 				}
 
-				try {
-					exists = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita,
-							duration[0]);
-					System.out.println(exists);
-					System.out.println(duration[0]);
-					// πέρνουμε ειδικότητα και όχι τελική επιλογή= υπηρεσία γιατι τσεκάρω βάση κενών
-					// των γιατρων
-					// ένας γιατρος με σπεσιαλτι = αιματολ μπορει να κάνει ολες τις αιματολ.
-				} catch (ArrayIndexOutOfBoundsException e) {
-					System.out.println("error in array's bounds.");
+			} else { // NOT A SUGGESTION
+
+				/*System.out.println("Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ·Ξ½ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ!");*/
+				JOptionPane.showMessageDialog(frame,"Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ·Ξ½ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ!");
+				/*System.out.println("ΞΞ®Ξ½Ξ±Ο‚: ");
+				month = m.nextInt();*/
+				String mon=JOptionPane.showInputDialog(frame,"ΞΞ®Ξ½Ξ±Ο‚:");
+				month=Integer.parseInt(mon);
+				/*System.out.println("Ξ—ΞΌΞ­ΟΞ±: ");
+				day = m.nextInt();*/
+				String d=JOptionPane.showInputDialog(frame,"Ξ—ΞΌΞ­ΟΞ±:");
+                day=Integer.parseInt(d);
+				data = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita, duration[0]);
+			}
+		
+
+			for (int t = 1; t <= 16; t++) { // make sure that there's content in table data
+				if (data[0][0].contains(calendar[month][day].getTable()[t][0])) {
+					hours++;
+					break;
 				}
 			}
-			double totalcells;
 
-			if (exists != 0) { // υπάρχουν κενές ώρες
+			if (hours != 0) { // THERE ARE FREE HOURS
 
-				System.out.println(
-						"Διαλέξτε την ώρα που επιθυμείτε (επιλέξτε ΑΛΛΟ αν δεν σας βολεύει καμία διαθέσιμη ώρα)");
-				boolean correct = false;
+				/*System.out.println(
+						"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±):");
+				anstime = m.next();*/
+				anstime=JOptionPane.showInputDialog(frame,"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±):");
 
-				while (correct == false) {
-					try {
-						anstime = m.next();
-						correct = true;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
+				if (!(anstime.contains("Ξ‘Ξ›Ξ›Ξ"))) { // ONE OF THE AVAILABLE HOURS IS SELECTED
+
+					for (int kk = 0; kk < 16; kk++) { // the real j(= doctor)
+						int num = Integer.parseInt(anstime.substring(0, 1));
+						int dat = Integer.parseInt(data[kk][0].substring(0, 1));
+						if (num == dat) {
+							existsnew = Integer.parseInt(data[kk][1]);
+							break;
+						}
 					}
-				}
-
-				if (!(anstime.contains("ΑΛΛΟ"))) { // τον βολεύει κάποια απο τις ώρες μας
 
 					for (int k = 1; k <= 16; k++) {
 
 						if (duration[0] <= 30) {
+							if (calendar[month][day].getTable()[k][0].contains(anstime)) {
 
-							try {
-								if (calendar[month][day].getTable()[k][0].contains(anstime)) {
-
-									validcode = rand.nextInt(100000);
-									stringvalidcode = String.valueOf(validcode);
-									stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
-									stringcode = stringvalidcode + stringid;
-									calendar[month][day].getTable()[k][exists] = "  " + stringcode + "     ";
-									break;
-								}
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("error in array's bounds.");
+								validcode = rand.nextInt(100000);
+								stringvalidcode = String.valueOf(validcode);
+								stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
+								stringcode = stringvalidcode + stringid;
+								calendar[month][day].getTable()[k][existsnew] = "  " + stringcode + "     ";
+								break;
 							}
 						} else {
 							totalcells = (duration[0] / 30);
-
-							try {
-								if (calendar[month][day].getTable()[k][0].contains(anstime)) {
-									validcode = rand.nextInt(100000);
-									int ip = 0;
-									if ((duration[0] % 30) == 0) {
-										ip = 0;
-									} else {
-										ip = 1;
-									}
-									for (int l = 0; l < (totalcells + ip); l++) {
-										stringvalidcode = String.valueOf(validcode);
-										stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
-										stringcode = stringvalidcode + stringid;
-										calendar[month][day].getTable()[k + l][exists] = "  " + stringcode + "     ";
-									}
-									break;
+							if (calendar[month][day].getTable()[k][0].contains(anstime)) {
+								validcode = rand.nextInt(100000);
+								for (int l = 0; l < totalcells; l++) {
+									stringvalidcode = String.valueOf(validcode);
+									stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
+									stringcode = stringvalidcode + stringid;
+									calendar[month][day].getTable()[k + l][existsnew] = "  " + stringcode + "     ";
 								}
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("error in array's bounds.");
+								break;
 							}
-						} // όταν το ραντεβού κρατάει πάνω απο μισή ώρα συμπληρώνω με τα στοιχεία του
-							// πελάτη όλα τα απαραίτητα κελιά του τέιμπλ
-
+						} 
 					}
-				} else { // ενώ έχουμε κενό εκείνη την μέρα δεν τον βολεύει κάποια ώρα --> άρα ξανα
-							// τρέχτο
-					System.out.println("Καταλαβαίνουμε ότι οι διαθέσιμες ώρες μας μπορεί να μην \n"
-							+ "σας βόλεψαν, παρακαλώ εισάγετε καινούρια στοιχεία για να σας εξυπηρετήσουμε ή αφήστε \n"
-							+ "μας να σας προτείνουμε ελεύθερες ώρες σε κοντινές ημερομηνίες.\n ΠΡΟΤΑΣΗ ή ΕΚ ΝΕΟΥ ΗΜΕΡΟΜΗΝΙΑ.");
-
-					correct = false;
-
-					while (correct == false) {
-						try {
-							protasi = m.next();
-							correct = true;
-						} catch (InputMismatchException e) {
-							System.out.println("insert the required info.");
-						}
-					}
-					exists = 0;
-					// anstime = "1";
+				} else { // NONE OF THE AVAILABLE HOURS IS SELECTED BY THE CLIENT
+				   /*System.out.println("ΞΞ±Ο„Ξ±Ξ»Ξ±Ξ²Ξ±Ξ―Ξ½ΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ ΞΌΞ±Ο‚ ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± ΞΌΞ·Ξ½ \n"
+							+ "ΟƒΞ±Ο‚ Ξ²ΟΞ»ΞµΟΞ±Ξ½, Ο€Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± Ξ½Ξ± ΟƒΞ±Ο‚ ΞµΞΎΟ…Ο€Ξ·ΟΞµΟ„Ξ®ΟƒΞΏΟ…ΞΌΞµ Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ \n"
+							+ "ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚!  \n*ΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\n*Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+					protasi = m.next();*/
+					protasi=JOptionPane.showInputDialog(frame,"ΞΞ±Ο„Ξ±Ξ»Ξ±Ξ²Ξ±Ξ―Ξ½ΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ ΞΌΞ±Ο‚ ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± ΞΌΞ·Ξ½"
+							                                   +"\r\n ΟƒΞ±Ο‚ Ξ²ΟΞ»ΞµΟΞ±Ξ½, Ο€Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± Ξ½Ξ± ΟƒΞ±Ο‚ ΞµΞΎΟ…Ο€Ξ·ΟΞµΟ„Ξ®ΟƒΞΏΟ…ΞΌΞµ Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ"
+							                                   +"\r\n ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚.\nΞ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ:\nΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\nΞ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+					existsnew = 0;
 				}
-				// μπαινω στον συγκεκριμένο table που διαλεξε ο πελάτης και συμπληρώνω στο κελι
-				// -με ώρα
-				// k και γιατρο τον πρώτο που βρίσκει απο την checkingFreehours δλδ τον exists-
-				// την toString
-				// του πελάτη μου, τον οποίο θα τον βρίσκω απο το numOfClients -1 κάθε φορά
-
-			} else { // δε έχει κανένα κενό εκείνη την μέρα (exists == 0) --> άρα ξανα τρέχτο
-				System.out.println("Δεν βρήκαμε ελεύθερες ώρες για εσάς την συγκεκριμένη μέρα,\n "
-						+ "αν επιθυμείτε επανεισάγετε τα στοιχεία για μία κανούρια ημερομηνία ή αφήστε μας να σας προτείνουμε\n "
-						+ "ελεύθερες ώρες σε κοντινές ημερομηνίες\n ΠΡΟΤΑΣΗ ή ΝΕΑ ΗΜΕΡΟΜΗΝΙΑ");
-
-				boolean correct = false;
-
-				while (correct == false) {
-					try {
-						protasi = m.next();
-						correct = true;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
-				}
-
+			} else { // DID NOT FIND FREE HOURS
+				/*System.out.println("Ξ”ΞµΞ½ Ξ²ΟΞ®ΞΊΞ±ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± ΞµΟƒΞ¬Ο‚ Ο„Ξ·Ξ½ ΟƒΟ…Ξ³ΞΊΞµΞΊΟΞΉΞΌΞ­Ξ½Ξ· ΞΌΞ­ΟΞ±,\n "
+						+ "Ξ±Ξ½ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ ΞµΟ€Ξ±Ξ½ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± ΞΌΞ―Ξ± ΞΊΞ±Ξ½ΞΏΟΟΞΉΞ± Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ\n "
+						+ "ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚!  \n*ΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\n*Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+				protasi = m.next();*/
+				
+				protasi=JOptionPane.showInputDialog(frame,"Ξ”ΞµΞ½ Ξ²ΟΞ®ΞΊΞ±ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± ΞµΟƒΞ¬Ο‚ Ο„Ξ·Ξ½ ΟƒΟ…Ξ³ΞΊΞµΞΊΟΞΉΞΌΞ­Ξ½Ξ· ΞΌΞ­ΟΞ±,"
+                        +"\r\n Ξ±Ξ½ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ ΞµΟ€Ξ±Ξ½ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± ΞΌΞ―Ξ± ΞΊΞ±Ξ½ΞΏΟΟΞΉΞ± Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ"
+                        +"\r\n ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚.\nΞ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ:\nΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\nΞ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+				
 			}
 		}
-		System.out.println(duration[0] + "   " + duration[1]);
-		System.out.println("Γεια σου " + Client.clients.get(Client.numOfClients - 1).getName() + " "
-				+ Client.clients.get(Client.numOfClients - 1).getSurname() + "!\nΤο ραντεβού σου καταχωρήθηκε για τις "
-				+ day + "/" + month + "/2019\n" + "Ώρα: " + anstime + "\n" + "Εξέταση: " + t1[2] + " (κατηγορία: "
-				+ t1[1] + ")\n" + "Κόστος: " + duration[1] + "$" + "\n" + "Κωδικός επιβεβαίωσης: " + stringvalidcode);
-	}
-	
-	// kat= "katachorish", doc = null --> για την αρχική καταχώρηση
-	// η ίδια μέθοδος χρησιμοποιείται και στην αλλαγή ραντεβού, και ανάλογα αν έχω
-	// αλλαγή και καταχώρηση εκ νεόυ κάποιων στοιχειων
-	// ή αρχική καταχώρηση εκετλούνται διαφορετικά τμήματα της μεθόδου
+		
+		if (kat.contains("katachorish")) {
+			/*System.out.println("-------------------------------------------------\n" + "Ξ“ΞµΞΉΞ± ΟƒΞΏΟ… "
+					+ Client.clients.get(Client.numOfClients - 1).getName() + " "
+					+ Client.clients.get(Client.numOfClients - 1).getSurname()
+					+ "!\nΞ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞΏΟ… ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+ "\nΞ•ΞΎΞ­Ο„Ξ±ΟƒΞ·: " + t1[2] + " (ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±: " + t1[1] + ")\n" + "ΞΟΟƒΟ„ΞΏΟ‚: " + duration[1] + "$"
+					+ "\nΞΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode
+					+ "\n-------------------------------------------------");
+			*/
+			JOptionPane.showMessageDialog(frame,"Ξ“ΞµΞΉΞ± ΟƒΞΏΟ… "+ Client.clients.get(Client.numOfClients - 1).getName()
+                    +"  " + Client.clients.get(Client.numOfClients - 1).getSurname()
+					+"\r\nΞ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞΏΟ… ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+"\r\nΞ•ΞΎΞ­Ο„Ξ±ΟƒΞ·: " + t1[2] + " (ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±: " + t1[1] + ")\n" + "ΞΟΟƒΟ„ΞΏΟ‚: " + duration[1] + "$"
+					+ "\r\nΞΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode);
+			
+			Menu.sumPlus(t1[1]);
+		} else {
+			/*System.out.println("-------------------------------------------------\n"
+					+ "Ξ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞ±Ο‚ ΞΌΞµΟ„Ξ±ΞΊΞΉΞ½Ξ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+ "\nΞ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞΏΟ‚ ΟƒΞ±Ο‚ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode
+					+ "\n-------------------------------------------------");
+			*/
+			JOptionPane.showMessageDialog(frame,"Ξ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞ±Ο‚ ΞΌΞµΟ„Ξ±ΞΊΞΉΞ½Ξ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±:" + anstime
+                    +"\r\nΞ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞΏΟ‚ ΟƒΞ±Ο‚ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚:" + stringvalidcode);
+			Menu.sumPlus(t1[1]);
+         }
+	} 
 
-	public static void basedOnDateAndEmp(String[] t1, double [] duration, String kat, String doc, Table[][] calendar) {
-		// ΒΑΣΗ ΚΑΙ ΓΙΑΤΡΟΥ--> ans == "2"
+	
+	public static void basedOnDateAndEmp(String[] t1, double[] duration, String kat, String doc, Table[][] calendar) {
+		// BASED ON DATE AND EMPLOYEE
 
 		Random rand = new Random();
 		int validcode = 0;
 		String stringid = null;
 		String stringvalidcode = null;
 		String stringcode = null;
-		String anstime = " ΑΛΛΟ ";
+		String anstime = "Ξ‘Ξ›Ξ›Ξ";
 		int exists = 0;
-		String protasi = "οχι";
+		String protasi = "no protasi";
 		String eidikotita = t1[1];
 		ArrayList<String> doc_names = new ArrayList<String>();
 		doc_names = Employees.returnDocNames(eidikotita);
@@ -307,56 +253,77 @@ public class EnterAppointment {
 		int month = 0;
 		int md[] = new int[3];
 		String doctor = null;
+		int empid = 0;
 
-		while ((anstime == " ΑΛΛΟ ") || (exists == 0)) { // ψάχνω μέχρι να βρω διαθέσιμες ώρες ΚΑΙ μέχρι
-															// κάποια απο αυτές να βολεύει τον πελάτη μας
+		while ((anstime.contains("Ξ‘Ξ›Ξ›Ξ")) || (exists == 0)) { 
+			
+			if (!(protasi.contains("Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—"))) {
 
-			if (!(protasi.equals("ΠΡΟΤΑΣΗ"))) {
-				System.out.println("Παρακαλώ εισάγετε την ημερομηνία που επιθυμείτε");
-
-				boolean ok1 = true;
-
-				while (ok1) {
-
-					try {
-						System.out.println("Μήνας: ");
-						month = m.nextInt();
-						System.out.println("Ημέρα: ");
-						day = m.nextInt();
-						ok1 = false;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
-				}
-
-				if (kat == "katachorish") {
-					System.out.println("επιλέξτε τον γιατρό που επιθυμείτε:");
+				/*System.out.println("Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ·Ξ½ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ!");
+			
+				System.out.println("ΞΞ®Ξ½Ξ±Ο‚: ");
+				month = m.nextInt();
+				System.out.println("Ξ—ΞΌΞ­ΟΞ±: ");
+				day = m.nextInt(); */
+            
+				JOptionPane.showMessageDialog(frame,"Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ·Ξ½ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ!");
+				String mon=JOptionPane.showInputDialog(frame,"ΞΞ®Ξ½Ξ±Ο‚: ");
+				month=Integer.parseInt(mon);
+				String da=JOptionPane.showInputDialog(frame,"Ξ—ΞΌΞ­ΟΞ±: ");
+				day=Integer.parseInt(da);
+				
+				if (kat.contains("katachorish")) {
+					/*System.out.println("Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ο„ΞΏΞ½ Ξ³ΞΉΞ±Ο„ΟΟ Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ:");
 					for (int d = 0; d < doc_num; d++) {
 						System.out.println(doc_names.get(d));
 					}
-					wannabeMain.in.nextLine();
-					doctor = wannabeMain.in.nextLine();
-
+					m.nextLine();
+					doctor = m.nextLine();*/
+					
+					StringBuilder text = new StringBuilder();
+					text.append("Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ο„ΞΏΞ½ Ξ³ΞΉΞ±Ο„ΟΟ Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ:"+"\r\n");
+					for (int d = 0; d < doc_num; d++) {
+					     text.append(doc_names.get(d)+"\r\n");
+					 }
+				    doctor=JOptionPane.showInputDialog(frame,text.toString());
+					
 				} else {
 					doctor = doc;
 				}
-
-				
-					exists = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita,
-							duration[0], doctor); // η θέση του γιατρού
-				
-			} else {
-				if (kat == "katachorish") {
-					System.out.println("Επιλέξτε τον γιατρό που επιθυμείτε");
-					for (int iii = 0; iii < Employees.employees.size(); iii++) {
-						System.out.println(Employees.employees.get(iii));
+                 
+				for (int g = 0; g < Employees.employees.size(); g++) {
+					if (Employees.employees.get(g).getEmp_name().contains(doctor)) {
+						empid = g;
+						break;
 					}
-					doctor = wannabeMain.in.nextLine();
+				}
 
+				exists = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita,
+						duration[0], empid); // the doctor 
+			} else {
+				if (kat.contains("katachorish")) {
+					/*System.out.println("Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ο„ΞΏΞ½ Ξ³ΞΉΞ±Ο„ΟΟ Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ:");
+					for (int d = 0; d < doc_num; d++) {
+						System.out.println(doc_names.get(d));
+					}
+					m.nextLine();
+					doctor = m.nextLine();*/
+					StringBuilder text = new StringBuilder();
+					text.append("Ξ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ο„ΞΏΞ½ Ξ³ΞΉΞ±Ο„ΟΟ Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ:"+"\r\n");
+					for (int d = 0; d < doc_num; d++) {
+					     text.append(doc_names.get(d)+"\r\n");
+					 }
+				    doctor=JOptionPane.showInputDialog(frame,text.toString());
 				} else {
 					doctor = doc;
 				}
-				md = suggestion(month, day, eidikotita, duration[0], doctor, calendar);
+
+				for (int g = 0; g < Employees.employees.size(); g++) {
+					if (Employees.employees.get(g).getEmp_name().equals(doctor)) {
+						empid = g;
+					}
+				}
+				md = suggestion(month, day, eidikotita, duration[0], empid, calendar);
 				day = md[1];
 				month = md[0];
 				exists = md[2];
@@ -364,182 +331,181 @@ public class EnterAppointment {
 
 			double totalcells = 0;
 
-			if (exists != 0) { // ΒΡΗΚΑ ΚΕΝΕΣ ΩΡΕΣ
-				System.out.println(
-						"Διαλέξτε την ώρα που επιθυμείτε (επιλέξτε ΑΛΛΟ αν δεν σας βολεύει καμία διαθέσιμη ώρα)");
-				boolean correct = false;
-				while (correct == false) {
-					try {
-						anstime = m.nextLine();
-						correct = true;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
+			if (exists != 0) { // THERE ARE FREE HOURS
+
+				if (kat.contains("katachorish")) {
+					/*System.out.println(
+							"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±)!");
+					anstime = m.nextLine();*/
+					anstime=JOptionPane.showInputDialog(frame,"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±)!");
+				} else {
+					/*System.out.println(
+							"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±)!");
+					m.nextLine();
+					anstime = m.nextLine();*/
+					anstime=JOptionPane.showInputDialog(frame,"Ξ”ΞΉΞ±Ξ»Ξ­ΞΎΟ„Ξµ Ο„Ξ·Ξ½ ΟΟΞ± Ο€ΞΏΟ… ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ (ΞµΟ€ΞΉΞ»Ξ­ΞΎΟ„Ξµ Ξ‘Ξ›Ξ›Ξ Ξ±Ξ½ Ξ΄ΞµΞ½ ΟƒΞ±Ο‚ Ξ²ΞΏΞ»ΞµΟΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ· ΟΟΞ±)!");
 				}
 
-				if (anstime != "ΑΛΛΟ") { // τον βολεύει κάποια απο τις ώρες μας
+				if (!(anstime.contains("Ξ‘Ξ›Ξ›Ξ"))) { // ONE OF THE AVAILABLE HOURS IS SELECTED
 
 					for (int k = 1; k <= 16; k++) {
 
 						if (duration[0] <= 30) {
-
-							try {
-								if (calendar[month][day].getTable()[k][0] == anstime) {
+							if (calendar[month][day].getTable()[k][0].contains(anstime)) {
+								
+								validcode = rand.nextInt(100000);
+								stringvalidcode = String.valueOf(validcode);
+								stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
+								stringcode = stringvalidcode + stringid;
+								calendar[month][day].getTable()[k][exists] = "   " + stringcode;
+								break;
+							}
+						} else {
+							totalcells = (duration[0] / 30);
+							if (calendar[month][day].getTable()[k][0].contains(anstime)) {
+								
+								for (int l = 0; l < totalcells; l++) {
 									validcode = rand.nextInt(100000);
 									stringvalidcode = String.valueOf(validcode);
 									stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
 									stringcode = stringvalidcode + stringid;
-									calendar[month][day].getTable()[k][exists] = "   " + stringcode;
-									break;
+									calendar[month][day].getTable()[k + l][exists] = "   " + stringcode;
 								}
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("error in array's bounds.");
-							}
-
-						} else {// όταν το ραντεβού κρατάει πάνω απο μισή ώρα συμπληρώνω με τα στοιχεία του
-								// πελάτη όλα τα απαραίτητα κελιά του τέιμπλ
-							totalcells = (duration[0] / 30);
-
-							try {
-								if (calendar[month][day].getTable()[k][0] == anstime) {
-									int ip = 0;
-									if ((duration[0] % 30) == 0) {
-										ip = 0;
-									} else {
-										ip = 1;
-									}
-									for (int l = 0; l < (totalcells + ip); l++) {
-										validcode = rand.nextInt(100000);
-										stringvalidcode = String.valueOf(validcode);
-										stringid = String.valueOf(Client.clients.get(Client.numOfClients - 1).getId());
-										stringcode = stringvalidcode + stringid;
-										calendar[month][day].getTable()[k + l][exists] = "   " + stringcode;
-									}
-									break;
-								}
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("error in array's bounds.");
+								break;
 							}
 						}
 					}
-				} else { // δεν τον βολεύει κάποια ώρα απο αυτές που βρήκα --> άρα ξανα τρέχτο
-					System.out.println("Καταλαβαίνουμε ότι οι διαθέσιμες ώρες μας μπορεί να μην "
-							+ "σας βόλεψαν, παρακαλώ εισάγετε καινούρια στοιχεία για να σας εξυπηρετήσουμε ή αφήστε "
-							+ "μας να σας προτείνουμε ελεύθερες ώρες σε κοντινές ημερομηνίες!\n ΠΡΟΤΑΣΗ ή ΝΕΑ ΗΜΕΡΟΜΗΝΙΑ ");
-
-					correct = false;
-					while (correct == false) {
-						try {
-							protasi = m.next();
-							correct = true;
-						} catch (InputMismatchException e) {
-							System.out.println("insert the required info.");
-						}
-					}
-				}
-			} else { // ΔΕΝ ΒΡΗΚΑ ΚΕΝΕΣ ΩΡΕΣ --> ξανα τρέχτο
-				System.out.println(
-						"Δεν βρήκαμε ελεύθερες ώρες για εσάς την συγκεκριμένη μέρα με τον συγκεκριμένο γιατρό, "
-								+ "αν επιθυμείτε επανεισάγετε τα στοιχεία για μία κανούρια ημερομηνία ή αφήστε μας να σας προτείνουμε "
-								+ "ελεύθερες ώρες σε κοντινές ημερομηνίες!\n ΠΡΟΤΑΣΗ ή ΝΕΑ ΗΜΕΡΟΜΗΝΙΑ ");
-
-				boolean correct = false;
-				while (correct == false) {
-					try {
-						protasi = m.next();
-						correct = true;
-					} catch (InputMismatchException e) {
-						System.out.println("insert the required info.");
-					}
-				}
-
-			}
-		}
-		System.out.println("Γεια σου " + Client.clients.get(Client.numOfClients - 1).getName() + " "
-				+ Client.clients.get(Client.numOfClients - 1).getSurname() + "!\nΤο ραντεβού σου καταχωρήθηκε για τις "
-				+ day + "/" + month + "/2019\n" + "Ώρα: " + anstime + "\n" + "Εξέταση: " + t1[2] + " (κατηγορία: " + t1[1] + ")\n" + "Ιατρός: "
-				+ doctor + "Κόστος: " + duration[1] + "\n" + "\nΚωδικός επιβεβαίωσης: " + stringvalidcode);
-
-	}
-
-	public static int[] suggestion(int month, int day, String eidikotita, double duration, Table[][] calendar) { // ANS = 1
-
-		int[] md = new int[3];
-		int ex1 = 0;
-		int d = 0;
-		while (ex1 == 0) { // ΒΡΙΣΚΕΙ ΓΙΑ 1 ΜΕΡΑ ΜΕΤΑ ΚΕΝΕΣ ΩΡΕΣ
-
-			//try {
-				if (day == 30) {
-					ex1 = calendar[month + 1][1].checkingFreehours(calendar[month + 1][1].getTable(),
-							eidikotita, duration);
-					if (ex1 != 0) {
-						md[1] = 1;
-						md[0] = month + 1;
-						System.out.println("Αυτές είναι οι διαθέσιμες ώρες για " + md[1] + "/" + md[0]);
-					}
-					day = 1;
-				
-				} else {
-					ex1 = calendar[month][day + d + 1].checkingFreehours(calendar[month][day + d + 1].getTable(),
-							eidikotita, duration);
+				} else { // NONE OF THE AVAILABLE HOURS IS SELECTED BY THE CLIENT
+					/*System.out.println("ΞΞ±Ο„Ξ±Ξ»Ξ±Ξ²Ξ±Ξ―Ξ½ΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ ΞΌΞ±Ο‚ ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± ΞΌΞ·Ξ½ "
+							+ "\nΟƒΞ±Ο‚ Ξ²ΟΞ»ΞµΟΞ±Ξ½, Ο€Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± Ξ½Ξ± ΟƒΞ±Ο‚ \nΞµΞΎΟ…Ο€Ξ·ΟΞµΟ„Ξ®ΟƒΞΏΟ…ΞΌΞµ Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ "
+							+ "ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚!   \n*ΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\n*Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+					protasi = m.next();*/
 					
-					day = day + d + 1;
-					if (ex1 != 0) {
-						md[1] = day;
-						md[0] = month;
-						System.out.println("Αυτές είναι οι διαθέσιμες ώρες για " + md[1] + "/" + md[0]);
-					}
+					protasi=JOptionPane.showInputDialog(frame,"ΞΞ±Ο„Ξ±Ξ»Ξ±Ξ²Ξ±Ξ―Ξ½ΞΏΟ…ΞΌΞµ ΟΟ„ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ ΞΌΞ±Ο‚ ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± ΞΌΞ·Ξ½"
+                            +"\r\nΟƒΞ±Ο‚ Ξ²ΟΞ»ΞµΟΞ±Ξ½, Ο€Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξ±ΞΉ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± Ξ½Ξ± ΟƒΞ±Ο‚ ΞµΞΎΟ…Ο€Ξ·ΟΞµΟ„Ξ®ΟƒΞΏΟ…ΞΌΞµ Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ"
+                            +"\r\nΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚.\nΞ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ:\nΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\nΞ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
 				}
-			//} catch (ArrayIndexOutOfBoundsException e) {
-				//System.out.println("error in array's bounds");
-			//}
-
-			d++;
-		
+			} else { // DID NOT FIND FREE HOURS 
+				/*System.out.println(
+						"Ξ”ΞµΞ½ Ξ²ΟΞ®ΞΊΞ±ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± ΞµΟƒΞ¬Ο‚ Ο„Ξ·Ξ½ ΟƒΟ…Ξ³ΞΊΞµΞΊΟΞΉΞΌΞ­Ξ½Ξ· ΞΌΞ­ΟΞ± ΞΌΞµ Ο„ΞΏΞ½ ΟƒΟ…Ξ³ΞΊΞµΞΊΟΞΉΞΌΞ­Ξ½ΞΏ Ξ³ΞΉΞ±Ο„ΟΟ\n, "
+								+ "Ξ±Ξ½ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ ΞµΟ€Ξ±Ξ½ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± ΞΌΞ―Ξ± ΞΊΞ±Ξ½ΞΏΟΟΞΉΞ± Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ξ® \nΞ±Ο†Ξ®ΟƒΟ„Ξµ ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ "
+								+ "ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚!   \n*ΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\n*Ξ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+				protasi = m.next();*/
+				protasi=JOptionPane.showInputDialog(frame,"Ξ”ΞµΞ½ Ξ²ΟΞ®ΞΊΞ±ΞΌΞµ ΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± ΞµΟƒΞ¬Ο‚ Ο„Ξ·Ξ½ ΟƒΟ…Ξ³ΞΊΞµΞΊΟΞΉΞΌΞ­Ξ½Ξ· ΞΌΞ­ΟΞ±,"
+                        +"\r\nΞ±Ξ½ ΞµΟ€ΞΉΞΈΟ…ΞΌΞµΞ―Ο„Ξµ ΞµΟ€Ξ±Ξ½ΞµΞΉΟƒΞ¬Ξ³ΞµΟ„Ξµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± Ξ³ΞΉΞ± ΞΌΞ―Ξ± ΞΊΞ±Ξ½ΞΏΟΟΞΉΞ± Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± Ξ® Ξ±Ο†Ξ®ΟƒΟ„Ξµ ΞΌΞ±Ο‚ Ξ½Ξ± ΟƒΞ±Ο‚ Ο€ΟΞΏΟ„ΞµΞ―Ξ½ΞΏΟ…ΞΌΞµ"
+                        +"\r\nΞµΞ»ΞµΟΞΈΞµΟΞµΟ‚ ΟΟΞµΟ‚ ΟƒΞµ ΞΊΞΏΞ½Ο„ΞΉΞ½Ξ­Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―ΞµΟ‚.\nΞ•Ο€ΞΉΞ»Ξ­ΞΎΟ„Ξµ:\nΞΞ•Ξ‘ Ξ•Ξ™Ξ£Ξ‘Ξ“Ξ©Ξ“Ξ—\nΞ Ξ΅ΞΞ¤Ξ‘Ξ£Ξ—");
+			}
 		}
-
-		md[2] = ex1;
-		return md; // απλώς θα μας δίνει την μέρα και τον μήνα της ημερομηνίας που του προτείναμε
-					// και πάμε στην βασική μέθοδο και τα χρησιμοποιούμε κατευθείαν χωρίς να κάνουμε
-					// ερωτήσεις για μέρα και μήνα κλπ.
+		
+		if (kat.contains("katachorish")) {
+			/*System.out.println("-------------------------------------------------\n" + "Ξ“ΞµΞΉΞ± ΟƒΞΏΟ… "
+					+ Client.clients.get(Client.numOfClients - 1).getName() + " "
+					+ Client.clients.get(Client.numOfClients - 1).getSurname()
+					+ "!\nΞ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞΏΟ… ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+ "\nΞ•ΞΎΞ­Ο„Ξ±ΟƒΞ·: " + t1[2] + " (ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±: " + t1[1] + ")\n" + "ΞΟΟƒΟ„ΞΏΟ‚: " + duration[1] + "$"
+					+ "\nΞ™Ξ±Ο„ΟΟΟ‚: " + doctor + "\nΞΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode
+					+ "\n--------------------------------------------------");*/
+			JOptionPane.showMessageDialog(frame,"Ξ“ΞµΞΉΞ± ΟƒΞΏΟ… "
+					+ Client.clients.get(Client.numOfClients - 1).getName() + " "
+					+ Client.clients.get(Client.numOfClients - 1).getSurname()
+					+ "!\nΞ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞΏΟ… ΞΊΞ±Ο„Ξ±Ο‡Ο‰ΟΞ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+ "\nΞ•ΞΎΞ­Ο„Ξ±ΟƒΞ·: " + t1[2] + " (ΞΊΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±: " + t1[1] + ")\n" + "ΞΟΟƒΟ„ΞΏΟ‚: " + duration[1] + "$"
+					+ "\nΞ™Ξ±Ο„ΟΟΟ‚: " + doctor + "\nΞΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode);
+			
+			Menu.sumPlus(t1[1]);
+		} else {
+			/*System.out.println("-------------------------------------------------\n"
+					+ "Ξ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞ±Ο‚ ΞΌΞµΟ„Ξ±ΞΊΞΉΞ½Ξ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±: " + anstime
+					+ "\nΞ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞΏΟ‚ ΟƒΞ±Ο‚ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚: " + stringvalidcode
+					+ "\n-------------------------------------------------");*/
+			JOptionPane.showMessageDialog(frame,"Ξ¤ΞΏ ΟΞ±Ξ½Ο„ΞµΞ²ΞΏΟ ΟƒΞ±Ο‚ ΞΌΞµΟ„Ξ±ΞΊΞΉΞ½Ξ®ΞΈΞ·ΞΊΞµ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ " + day + "/" + month + "/2019\n" + "ΞΟΞ±:" + anstime
+                    +"\r\n Ξ ΞΊΞ±ΞΉΞ½ΞΏΟΟΞΉΞΏΟ‚ ΟƒΞ±Ο‚ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ·Ο‚:" + stringvalidcode);
+			Menu.sumPlus(t1[1]);
+		}
 	}
 
-	public static int[] suggestion(int month, int day, String eidikotita, double duration, String doctor,
-			Table[][] calendar) { // ANS = 2
+	public static String[][] suggestion(int month, int day, String eidikotita, double duration, Table[][] calendar) { // BASED ON DATE
+																														
+		String[][] md = new String[18][2];
+		int ex1 = 0;
+		String data1[][] = new String[16][2];
+
+		while (ex1 == 0) { // FIND THE NEXT'S DAY FREE HOURS 
+
+			if (day == 30) {
+
+				data1 = calendar[month + 1][1].checkingFreehours(calendar[month + 1][1].getTable(), eidikotita,
+						duration);
+
+				if (!(data1[0][0].equals(null))) { // check if there is available hours
+					md[1][0] = "1";
+					md[0][0] = String.valueOf(month + 1);
+					ex1 = 1;
+					JOptionPane.showMessageDialog(frame,"Ξ‘Ο…Ο„Ξ­Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± " + md[1][0] + "/" + md[0][0] + "!");
+					/*System.out.println();*/
+				}
+				day = 1;
+
+			} else {
+
+				data1 = calendar[month][day + 1].checkingFreehours(calendar[month][day + 1].getTable(), eidikotita,
+						duration);
+				
+				if (!(data1[0][0].equals(null))) { // check if there is available hours
+					md[1][0] = String.valueOf(day + 1);
+					md[0][0] = String.valueOf(month);
+					ex1 = 1;
+					JOptionPane.showMessageDialog(frame,"Ξ‘Ο…Ο„Ξ­Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± " + md[1][0] + "/" + md[0][0] + "!");
+					/*System.out.println("Ξ‘Ο…Ο„Ξ­Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± " + md[1][0] + "/" + md[0][0] + "!");
+					System.out.println();*/
+				}
+				day = day + 1;
+			}
+		}
+		md[0][1] = "0";
+		md[1][1] = "0";
+		for (int l = 2; l < 18; l++) {
+			md[l][0] = data1[l - 2][0];
+			md[l][1] = data1[l - 2][1];
+		}
+		return md;
+	}
+	
+	public static int[] suggestion(int month, int day, String eidikotita, double duration, int empid,
+			Table[][] calendar) { // BASED ON DATE AND EMPLOYEE
 
 		int[] md = new int[3];
 		int ex1 = 0;
 		int d = 0;
 
-		while (ex1 == 0) { // ΒΡΙΣΚΕΙ ΓΙΑ 1 ΜΕΡΑ ΜΕΤΑ ΚΕΝΕΣ ΩΡΕΣ
-
-			try {
-				if (day == 30) {
-					ex1 = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita, duration,
-							doctor);
-					if (ex1 != 0) {
-						md[1] = 1 + d;
-						md[0] = month + 1;
-					}
-				} else {
-					ex1 = calendar[month][day].checkingFreehours(calendar[month][day].getTable(), eidikotita, duration,
-							doctor);
-					if (ex1 != 0) {
-						md[1] = day + d + 1;
-						md[0] = month;
-					}
+		while (ex1 == 0) { // FIND THE NEXT'S DAY FREE HOURS 
+			
+			if (day == 30) {
+				ex1 = calendar[month + 1][1].checkingFreehours(calendar[month + 1][1].getTable(), eidikotita, duration,
+						empid);
+				if (ex1 != 0) {
+					
+					md[1] = 1;
+					md[0] = month + 1;
+					JOptionPane.showMessageDialog(frame,"Ξ‘Ο…Ο„Ξ­Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± " + md[1] + "/" + md[0] + "!");
 				}
-			} catch (ArrayIndexOutOfBoundsException e) {
-				System.out.println("error in array's bounds.");
+				day = 1;
+				
+			} else {
+				ex1 = calendar[month][day + d + 1].checkingFreehours(calendar[month][day + d + 1].getTable(),
+						eidikotita, duration, empid);
+				
+				if (ex1 != 0) {
+					md[1] = day + d + 1;
+					md[0] = month;
+					JOptionPane.showMessageDialog(frame,"Ξ‘Ο…Ο„Ξ­Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ ΞΏΞΉ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞµΟ‚ ΟΟΞµΟ‚ Ξ³ΞΉΞ± " + md[1] + "/" + md[0] + "!");
+					
+				}
+				day = day + 1;
 			}
-
-			d++;
 		}
 		md[2] = ex1;
-
 		return md;
-
 	}
 
 }
