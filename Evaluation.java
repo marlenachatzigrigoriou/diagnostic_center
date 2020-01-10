@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
  *         medical center as well as his experience of booking an online
  *         appointment.
  */
-public class EvaluationUp {
+public class Evaluation {
 
 	static ArrayList<String> questions = new ArrayList<String>();// list of questions for first method
 	protected static int[][] sumscenter = new int[4][2];
