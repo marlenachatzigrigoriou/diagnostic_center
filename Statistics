@@ -1,0 +1,174 @@
+import java.util.Random;
+import java.util.stream.IntStream;
+import java.util.IntSummaryStatistics;
+
+import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class Statistics extends Application {
+	       @Override
+		   public void start(Stage primaryStage) throws Exception {
+		       //πινακας με τα sums
+	    	   int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+	    	   IntStream stream = IntStream.of(array);
+		       IntSummaryStatistics stats =stream.summaryStatistics();
+		       double maxf=0;
+		       double minf=(array[0] /(double) stats.getSum())*100;
+		       System.out.println("the number of services is:");
+		       System.out.println(stats.getCount());
+		       System.out.println("the maximum number of visitors from all services is:");
+		       System.out.println(stats.getMax());
+		       System.out.println(" the minimum number of visitors from all services  is:");
+		       System.out.println(stats.getMin());
+		       System.out.println("the average nymber of visitors from all services is:");
+		       System.out.println(stats.getAverage());
+		       System.out.println("the total sum of visitors is:");
+		       System.out.println(stats.getSum());
+		       for (int i=0;i<=21;i++) {
+		    	   double k = (array[i] /(double) stats.getSum())*100;
+		    	   System.out.println("relative frequency(f) for service:" +i +" is:" + array[i] /(double) stats.getSum());
+		    	   System.out.println("relative frequency(f%) for service:" +i +" is:" + (array[i] /(double) stats.getSum())*100);
+		    	   System.out.println(); 
+		    	   if (k > maxf){
+		    		   maxf=k;
+		    	   }
+		    	   if (array[i] /(double) stats.getSum()*100 < minf){
+		    		   minf = k;
+		    	   }
+		       }
+		       System.out.println("maximum f%: "+maxf + "%");
+		       System.out.println("minimum f%: "+ minf + "%");
+		       CategoryAxis xAxis = new CategoryAxis();;
+		       xAxis.setLabel("Services");
+		       NumberAxis yAxis = new NumberAxis();
+		       yAxis.setLabel("Visitors");
+		 
+		       // Create a BarChart
+		       BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
+		 
+		       XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<String, Number>();
+		       dataSeries1.setName("2019-2020");
+		       //στην θεση των αριθμών θα μπουν τa sum-->ποσες φορεσ εχουν κλεισει ραντεβου για την κάθε υπηρεσία
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("aimatologikes", 35));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("aktinografies", 48));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("allergiologikes", 33));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("anosologikes", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("axonikestomogr", 27));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("biochimikes", 29));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("gastrenterologikes", 50));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("gynaikologikes", 75));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("ourwn", 45));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("kalliergeies", 15));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("kardiologikes", 54));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("magnitikestomogr", 20));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("mastografies", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("mikroviologikes", 25));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("neurologikes", 36));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("ormonikes", 39));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("progennitikos", 16));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("yperichoi", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("checkup", 27));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("doppler", 20));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("triplex", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("paketa", 27));
+		       
+		       // Add Series to BarChart.
+		       barChart.getData().add(dataSeries1);
+		       barChart.setTitle("Number of visitors per service");
+		 
+		       VBox vbox = new VBox(barChart);
+		 
+		       primaryStage.setTitle("BarChart");
+		       Scene scene = new Scene(vbox, 800, 600);
+		       primaryStage.setScene(scene);
+		       primaryStage.setHeight(300);
+		       primaryStage.setWidth(200);
+		       primaryStage.show();
+		       //set color in bars
+		       Node n = barChart.lookup(".data0.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data1.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data2.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data3.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data4.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data5.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data6.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data7.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data8.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data9.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data10.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data11.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data12.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data13.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data14.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data15.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data16.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data17.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data18.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data19.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data20.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data21.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		      //αξιολογηση διαγνωστικου κέντρου
+		       double [] mo = new double [5];
+		       double max2 = 0;
+		       double min2 = 0;
+		       int answer=0;
+		       int answer2=0;
+		       int [] sum = { 1000, 1020,800,700,900};
+		       for(int i=0;i<=4;i++) {
+		    	   //για καθε ερωτηση απο τον πινακα των σαμ υπολογιζει τον μεσο όρο κάθε απαντησης
+		    	   mo[i] = sum[i] / stats.getSum();
+		    	   int er=i+1;
+		    	   System.out.println("In quesion" + er+" visitors answer on average:"+mo[i]);
+		    	   if (mo[i]>max2) {
+		    		   max2 = mo[i];
+		    		   answer = i+1;
+		    	   }
+		    	   if (mo[i]<min2) {
+		    		   min2 = mo[i];
+		    		   answer2 = i+1;
+		    	   }
+		       }
+		       System.out.println("max is:" + max2 + "in answer" + answer);
+		       System.out.println("min is:" + min2 + "in answer" + answer2);
+		       
+		   }
+		   public static void main(String[] args) {
+		       Application.launch(args);
+		   }
+		}
+		
+	
+	
+	
+	
+	
