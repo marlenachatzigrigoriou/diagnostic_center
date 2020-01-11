@@ -1,0 +1,41 @@
+
+	// --------------------------------------------------------
+	// --------------METHODS FOR SUMS(STATISTICS)--------------
+
+	static int sum_categories[] = new int[22]; // services' names
+
+	/**
+	 * This method increases the corresponding cell of the table sum_categorires by
+	 * one when a client books an appointment of a certain category.
+	 *
+	 * @param category = the category the client chose
+	 */
+	public static void sumPlus(String category) {// WHEN ADDING
+
+		System.out.println(Services.eidikotites.size());
+		for (int i = 0; i < Services.eidikotites.size(); i++) {
+
+			if (Services.eidikotites.get(i).equals(category)) {
+				sum_categories[i]++; // sum of category
+			}
+		}
+	}
+
+	/**
+	 * This method decreases the corresponding cell of the table sum_categorires by
+	 * one when a client books an appointment of a certain category.
+	 *
+	 * @param category = the category the client chose
+	 *
+	 */
+	public static void sumMinus(String category) {// WHEN REDUCING
+
+		for (int i = 0; i < Services.eidikotites.size(); i++) {
+
+			if (Services.eidikotites.get(i).equals(category)) {
+				sum_categories[i]--; // sum of category
+			}
+		}
+	}
+
+}
