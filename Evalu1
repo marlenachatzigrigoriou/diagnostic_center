@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Evaluation {
+
+	static ArrayList<String> questions = new ArrayList<String>();
+	protected static int[][] sumscenter = new int[4][2];
+	private static int ans, i;
+	static ArrayList<String> questions2 = new ArrayList<String>();
+	protected static int[][] sumsapp = new int[3][2];
+	private static String ans2;
+	static JFrame fr;
+
+	public static void loadEvaluation() {
+		questions.add(" Αξιολογείστε την εμπειρία σας κατά την παραμονή σας στο κέντρο.");
+		questions.add(" Αξιολογείστε την ταχύτητα εξυπηρέτησης σας.");
+		questions.add(" Αξιολογείστε την ποιότητα εξυπηρέτησης σας.");
+		questions.add(" Πόσο ικανοποιημένοι μείνατε από την αλληλεπίδραση με το προσωπικό μας;");
+		questions2.add(" Εντόπισα εύκολα την υπηρεσία που έψαχνα.");
+		questions2.add(" Κλείνω συχνά ραντεβού μέσω της ιστοσελίδας.");
+		questions2.add(" Προτιμώ να κλείνω ραντεβού online παρά τηλεφωνικά.");
+	}
+
+	
+	public static void evaluate() { // evaluate the center
+
+		JOptionPane.showMessageDialog(fr,"Δώστε απάντηση 1-5 διαβαθμισμένα. \n");
+		boolean continueLoop = false;
+		i = 0;
+		
+		for (String q : questions) {
+			do { 
+				try {
+
+					/*System.out.println(q);
+					ans = Main.in.nextInt();*/
+					String an=JOptionPane.showInputDialog(fr,q);
+                    ans=Integer.parseInt(an);
+					if (ans >= 1 && ans <= 5) {
+						sumscenter[i][0] += ans;
+						sumscenter[i][1]++;
+						continueLoop = true; // εφόσον έφτασε εδώ το πρόγραμμα δεν παράχθηκε εξαίρεση αρα θέλουμε να
+												// συνεχίσει στην επόμενη ερώτηση
+					} else {
+						System.err.println("*** Eισάγετε έναν αριθμό από το 1 μέχρι το 5! ***");
+						continueLoop = false;
+					}
+					i++;
+				} catch (InputMismatchException i) {
+					JOptionPane.showMessageDialog(null, "Παρακαλώ πληκτρολογείστε ακέραιο 1-5", "Error message",
+							JOptionPane.ERROR_MESSAGE);
+					Main.in.nextLine();
+				}
+			} while (!continueLoop);
+		}
+		/*System.out.println("\n \nΗ αξιολόγηση σας καταχωρήθηκε. Σας ευχαριστούμε!");
+		System.out.println("\n ------------------------------------ \n");*/
+		JOptionPane.showMessageDialog(fr,"Η αξιολόγηση σας καταχωρήθηκε. Σας ευχαριστούμε!");
+	}
+
+	
+	public static void evaluateProcedure() { // evaluate the appointement
+
+		boolean continueLoop = false;
+
+		for (int q = 0; q < questions2.size(); q++) {
+			continueLoop = false;
+			do {
+				try {
+					if (q == 0) {
+						
+						ans2 = "";
+						/*System.out.println(questions2.get(q));
+						System.out.println("Απαντήστε με ΝΑΙ ή ΟΧΙ");
+						Main.in.nextLine();
+						ans2 = Main.in.nextLine();*/
+						
+						ans2=JOptionPane.showInputDialog(fr,questions2.get(q)+"\r\n Απαντήστε με ΝΑΙ ή ΟΧΙ");
+	                    
+						
+						if (ans2.equals(null)) {
+							break;
+						} else {
+							if (ans2.toLowerCase().indexOf("ν") != -1) {
+								sumsapp[q][0]++; // sum of "ΝΑΙ" for question q
+							} else {
+								sumsapp[q][1]++; // sum of "OXI" for question q
+							}
+						}
+						continueLoop = true;
+						
+					} else {
+						
+						/*System.out.println(questions2.get(q));
+						System.out.println("Απαντήστε με ΝΑΙ ή ΟΧΙ");
+						ans2 = Main.in.nextLine();*/
+						ans2=JOptionPane.showInputDialog(fr,questions2.get(q)+"\r\n Απαντήστε με ΝΑΙ ή ΟΧΙ");
+						
+						if (ans2.equals(null)) {
+							break;
+						} else {
+							if (ans2.toLowerCase().indexOf("ν") != -1) {
+								sumsapp[q][0]++; // sum of "ΝΑΙ" for question q
+							} else {
+								sumsapp[q][1]++; // sum of "OXI" for question q
+							}
+						}
+						continueLoop = true;
+					}
+				} catch (InputMismatchException i) {
+					JOptionPane.showMessageDialog(null, "Παρακαλώ πληκτρολογείστε NAI/OXI", "Error message",
+							JOptionPane.ERROR_MESSAGE);
+					Main.in.nextLine();
+				}
+			} while (!continueLoop);
+		}
+	}
+	
+
+}
