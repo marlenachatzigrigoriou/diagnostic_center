@@ -1,0 +1,268 @@
+import java.util.stream.IntStream;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.util.IntSummaryStatistics;
+import java.awt.BorderLayout;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class Statistics extends Application {
+	       private static DecimalFormat df2 =new DecimalFormat("#.##");
+	       @Override
+		   public void start(Stage primaryStage) throws Exception {
+		       //πινακας με τα sums
+	    	   int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+	    	   IntStream stream = IntStream.of(array);
+		       IntSummaryStatistics stats =stream.summaryStatistics();
+		       double maxf=0;
+		       double minf=(array[0] /(double) stats.getSum())*100;
+		      
+		       
+		       JFrame jf = new JFrame("");
+		       jf.setBounds(20,20,40,10);
+		       jf.setLayout(new BorderLayout());
+		       int max=(int) stats.getMax();
+		       String po=Integer.toString(max); 
+		       jf.add(new JButton("Ο μέγιστος αριθμός επισκεπτών από όλες τις υπηρεσίες είναι:"),BorderLayout.WEST); 
+		       jf.add(new JButton(po),BorderLayout.EAST);
+		       jf.setVisible(true);
+		       jf.setSize(450,250);
+		       jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		       
+		       JFrame jf2 = new JFrame("");
+		       jf2.setBounds(20,20,40,10);
+		       jf2.setLayout(new BorderLayout());
+		       int min=(int) stats.getMin();
+		       String min1=Integer.toString(min); 
+		       jf2.add(new JButton("Ο ελάχιστος αριθμός επισκεπτών από όλες τις υπηρεσίες είναι:"),BorderLayout.WEST); 
+		       jf2.add(new JButton(min1),BorderLayout.EAST);
+		       jf2.setVisible(true);
+		       jf2.setSize(450,250);
+		       jf2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		       
+		       JFrame jf3 = new JFrame("");
+		       jf3.setBounds(20,20,40,10);
+		       jf3.setLayout(new BorderLayout());
+		       int avg=(int) stats.getAverage();
+		       String avg1=Integer.toString(avg); 
+		       jf3.add(new JButton("Ο μέσος όρος επισκεπτών από όλες τις υπηρεσίες είναι:"),BorderLayout.WEST); 
+		       jf3.add(new JButton(avg1),BorderLayout.EAST);
+		       jf3.setVisible(true);
+		       jf3.setSize(400,150);
+		       jf3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		       
+		       JFrame jf4 = new JFrame("");
+		       jf4.setBounds(20,20,40,10);
+		       jf4.setLayout(new BorderLayout());
+		       int num=(int) stats.getSum();
+		       String num1=Integer.toString(num); 
+		       jf4.add(new JButton("Ο συνολικός  αριθμός επισκεπτών  είναι:"),BorderLayout.WEST); 
+		       jf4.add(new JButton(num1),BorderLayout.EAST);
+		       jf4.setVisible(true);
+		       jf4.setSize(300,250);
+		       jf4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		       
+		       JFrame jf1 = new JFrame("");
+		       jf1.setBounds(20,20,40,10);
+		       jf1.setLayout(new BorderLayout());
+		       int k=(int) stats.getCount();
+		       String p=Integer.toString(k); 
+		       jf1.add(new JButton("Ο συνολικός αριθμός υπηρεσιών είναι:"),BorderLayout.WEST); 
+		       jf1.add(new JButton(p),BorderLayout.EAST);
+		       jf1.setVisible(true);
+		       jf1.setSize(300,250);
+		       jf1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		      
+		       for (int i=0;i<=21;i++) {
+		    	   
+		    	   JFrame jf41 = new JFrame("");
+			       jf41.setBounds(20,20,40,10);
+			       jf41.setLayout(new BorderLayout());
+			       String mi = Integer.toString(i);
+			       jf41.add(new JButton("σχετική συχνότητα(f)για την υπηρεσία:"),BorderLayout.WEST);
+			       double in =array[i] /(double) stats.getSum();
+			       df2.format(in);
+			       String doub = Double.toString(in);
+			       jf41.add(new JButton(doub));
+			       jf41.add(new JButton("σχετική συχνότητα επί της% (f%) για την υπηρεσία:"),BorderLayout.WEST);
+			       double q = array[i] /((double) stats.getSum())*100;
+			       df2.format(q);
+			       String doubl = Double.toString(q);
+			       jf41.add(new JButton(doubl));
+			       jf41.setSize(400,150);
+			       jf41.setVisible(true);
+		    	   
+		    	   if (k > maxf){
+		    		   maxf=k;
+		    	   }
+		    	   if (array[i] /(double) stats.getSum()*100 < minf){
+		    		   minf = k;
+		    	   }
+		       }
+		       JFrame jf5 = new JFrame("");
+		       jf5.setBounds(20,20,40,10);
+		       jf5.setLayout(new BorderLayout());
+		       jf5.add(new JButton("Η μέγιστη σχετική συχνότητα επι της % είναι:"),BorderLayout.WEST); 
+		       String l=Double.toString(maxf);
+		       jf5.add(new JButton(l),BorderLayout.EAST);
+		       jf5.setSize(400,150);
+		       jf5.setVisible(true);
+		       
+		       JFrame jf6 = new JFrame("");
+		       jf6.setBounds(20,20,40,10);
+		       jf6.setLayout(new BorderLayout());
+		       jf6.add(new JButton("Η ελάχιστη σχετική συχνότητα επι της % είναι:"),BorderLayout.WEST); 
+		       String f=Double.toString(minf);
+		       jf6.add(new JButton(f),BorderLayout.EAST);
+		       jf6.setSize(400,150);
+		       jf6.setVisible(true);
+		       
+		       
+		       CategoryAxis xAxis = new CategoryAxis();;
+		       xAxis.setLabel("Υπηρεσίες");
+		       NumberAxis yAxis = new NumberAxis();
+		       yAxis.setLabel("Επισκέπτες");
+		 
+		       // Create a BarChart
+		       BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
+		 
+		       XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<String, Number>();
+		       dataSeries1.setName("2019-2020");
+		       //στην θεση των αριθμών θα μπουν τa sum-->ποσες φορεσ εχουν κλεισει ραντεβου για την κάθε υπηρεσία
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("aimatologikes", 35));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("aktinografies", 48));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("allergiologikes", 33));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("anosologikes", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("axonikestomogr", 27));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("biochimikes", 29));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("gastrenterologikes", 50));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("gynaikologikes", 75));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("ourwn", 45));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("kalliergeies", 15));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("kardiologikes", 54));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("magnitikestomogr", 20));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("mastografies", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("mikroviologikes", 25));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("neurologikes", 36));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("ormonikes", 39));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("progennitikos", 16));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("yperichoi", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("checkup", 27));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("doppler", 20));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("triplex", 13));
+		       dataSeries1.getData().add(new XYChart.Data<String, Number>("paketa", 27));
+		       
+		       // Add Series to BarChart.
+		       barChart.getData().add(dataSeries1);
+		       barChart.setTitle("Αριθμός επισκεπτών ανά υπηρεσία");
+		 
+		       VBox vbox = new VBox(barChart);
+		 
+		       primaryStage.setTitle("BarChart");
+		       Scene scene = new Scene(vbox, 800, 600);
+		       primaryStage.setScene(scene);
+		       primaryStage.setHeight(600);
+		       primaryStage.setWidth(700);
+		       primaryStage.show();
+		       //set color in bars
+		       Node n = barChart.lookup(".data0.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data1.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data2.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data3.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data4.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data5.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data6.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data7.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data8.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data9.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data10.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data11.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data12.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data13.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data14.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data15.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data16.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data17.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data18.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data19.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data20.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		       n = barChart.lookup(".data21.chart-bar");
+		       n.setStyle("-fx-bar-fill: red");
+		      //αξιολογηση διαγνωστικου κέντρου
+		       double [] mo = new double [5];
+		       double max2 = 0;
+		       double min2 = 0;
+		       int answer=0;
+		       int answer2=0;
+		       int [] sum = { 1000, 1020,800,700,900};
+		       for(int i=0;i<=4;i++) {
+		    	   //για καθε ερωτηση απο τον πινακα των σαμ υπολογιζει τον μεσο όρο κάθε απαντησης
+		    	   mo[i] = sum[i] / stats.getSum();
+		    	   int er=i+1;
+		    	   JFrame jf7 = new JFrame("");
+			       jf7.setBounds(20,20,40,10);
+			       jf7.setLayout(new BorderLayout());
+			       jf7.add(new JButton("Στην ερώτηση:"),BorderLayout.WEST); 
+			       String er1=Integer.toString(er);
+			       jf7.add(new JButton(er1),BorderLayout.CENTER);
+			       jf7.add(new JButton("απάντησαν κατά μέσο όρο:"),BorderLayout.CENTER);
+			       String m=Double.toString(mo[i]);
+			       jf7.add(new JButton(m));
+			       jf7.setSize(400,150);
+			       jf7.setVisible(true);
+		    	   if (mo[i]>max2) {
+		    		   max2 = mo[i];
+		    		   answer = i+1;
+		    	   }
+		    	   if (mo[i]<min2) {
+		    		   min2 = mo[i];
+		    		   answer2 = i+1;
+		    	   }
+		       }
+		       JFrame jf8 = new JFrame("");
+		       jf8.setBounds(20,20,40,10);
+		       jf8.setLayout(new BorderLayout());
+		       jf8.add(new JButton("Το μέγιστο είναι:"),BorderLayout.WEST); 
+		       String mx=Double.toString(max2);
+		       jf8.add(new JButton(mx),BorderLayout.CENTER);
+		       jf8.add(new JButton("στην ερώτηση:"),BorderLayout.CENTER);
+		       String apa=Integer.toString(answer);
+		       jf8.add(new JButton(apa));
+		       jf8.setSize(400,150);
+		       jf8.setVisible(true);
+		       
+		       
+		   }
+		   public static void main(String[] args) {
+		       Application.launch(args);
+		   }
+		}
