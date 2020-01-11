@@ -1,0 +1,430 @@
+import java.util.stream.IntStream;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.chart.*;
+import javafx.scene.Group;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.util.IntSummaryStatistics;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.text.DecimalFormat;
+import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import java.util.Scanner;
+public class Statistics extends Application {
+	       private static DecimalFormat df2 =new DecimalFormat("#.##");
+	       static Scanner sc = new Scanner(System.in);
+	       public void start(Stage primaryStage) throws Exception {
+	          CategoryAxis xAxis = new CategoryAxis();;
+	          xAxis.setLabel("Υπηρεσίες");
+	          NumberAxis yAxis = new NumberAxis();
+	          yAxis.setLabel("Επισκέπτες");
+	 
+	          // Create a BarChart
+	          BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
+	          XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<String, Number>();
+	          dataSeries1.setName("2019-2020");
+	           //στην θεση των αριθμών θα μπουν τa sum-->ποσες φορεσ εχουν κλεισει ραντεβου για την κάθε υπηρεσία
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("aimatologikes", 35));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("aktinografies", 48));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("allergiologikes", 33));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("anosologikes", 13));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("axonikestomogr", 27));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("biochimikes", 29));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("gastrenterologikes", 50));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("gynaikologikes", 75));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("ourwn", 45));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("kalliergeies", 15));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("kardiologikes", 54));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("magnitikestomogr", 20));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("mastografies", 13));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("mikroviologikes", 25));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("neurologikes", 36));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("ormonikes", 39));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("progennitikos", 16));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("yperichoi", 13));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("checkup", 27));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("doppler", 20));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("triplex", 13));
+	          dataSeries1.getData().add(new XYChart.Data<String, Number>("paketa", 27));
+	       
+	          // Add Series to BarChart.
+	          barChart.getData().add(dataSeries1);
+	          barChart.setTitle("Αριθμός επισκεπτών ανά υπηρεσία");
+	          VBox vbox = new VBox(barChart);
+	          primaryStage.setTitle("BarChart");
+	          Scene scene = new Scene(vbox, 800, 600);
+	          primaryStage.setScene(scene);
+	          primaryStage.setHeight(600);
+	          primaryStage.setWidth(700);
+	          primaryStage.show();
+	          //set color in bars
+	          Node n = barChart.lookup(".data0.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data1.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data2.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data3.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data4.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data5.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data6.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data7.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data8.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data9.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data10.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data11.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data12.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data13.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data14.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data15.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data16.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data17.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data18.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data19.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data20.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          n = barChart.lookup(".data21.chart-bar");
+	          n.setStyle("-fx-bar-fill: red");
+	          int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+		       Stage stage = new Stage();
+		       IntStream stream = IntStream.of(array);
+			   IntSummaryStatistics stats =stream.summaryStatistics();
+		       Scene scene1 = new Scene(new Group());
+		       stage.setTitle("Σχετική Συχνότητα %");
+		       stage.setWidth(500);
+		       stage.setHeight(500);
+			   ObservableList<PieChart.Data> pieChartData =
+					   FXCollections.observableArrayList(
+			           new PieChart.Data("Αιματολογικές", array[0] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Ακτινογραφίες",array[1] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Αλλεργιολογικές",array[2] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Ανοσολογικές",array[3] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Αξονικές Τομογραφίες",array[4] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Βιοχημικές",array[5] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Γαστρεντερολογικές",array[6] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Γυναικολογικές",array[7] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Ούρων",array[8] /((double) stats.getSum())*100),
+			           new PieChart.Data ("Καλλιέργειες",array[9] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Καρδιολογικές",array[10] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Μαγνητικές Τομογραφίες",array[11] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Μαστογραφίες",array[12] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Μικροβιολογικές",array[13] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Νευρολογικές",array[14] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Ορμονικές",array[15] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Προγεννητικός έλεγχος",array[16] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Υπέρηχοι",array[17] /((double) stats.getSum())*100),
+		                new PieChart.Data ("checkup",array[18] /((double) stats.getSum())*100),
+		                new PieChart.Data ("doppler",array[19] /((double) stats.getSum())*100),
+		                new PieChart.Data ("triplex",array[20] /((double) stats.getSum())*100),
+		                new PieChart.Data ("Πακέτα",array[21] /((double) stats.getSum())*100));
+			           
+			          
+			           final PieChart chart = new PieChart(pieChartData);
+			           chart.setStartAngle(180);
+			           
+			           chart.setTitle("Σχετική Συχνότητα % ");
+                    ((Group) scene1.getRoot()).getChildren().add(chart);
+			           stage.setScene(scene1);
+			           stage.show();
+	       }
+	       public static void generalResults() throws Exception {
+	    	   int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+	    	   IntStream stream = IntStream.of(array);
+		       IntSummaryStatistics stats =stream.summaryStatistics();
+		       double maxf=0;
+		       double minf=(array[0] /(double) stats.getSum())*100;
+		       JFrame frame= new JFrame("Στατιστικά");
+		       frame.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+		       JPanel mainPanel = new JPanel();
+		       mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		       JPanel headingPanel = new JPanel();
+		       JLabel headingLabel = new JLabel("Στατιστικά για τα διαγνωστικά κέντρα");
+		       headingLabel.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+		       headingPanel.add(headingLabel);
+		       JPanel panel = new JPanel(new GridBagLayout());
+		       GridBagConstraints constr = new GridBagConstraints();
+		       constr.anchor = GridBagConstraints.LINE_START;
+		       constr.anchor = GridBagConstraints.REMAINDER;
+		       constr.anchor = GridBagConstraints.WEST;
+		       constr.gridx=0;
+		       constr.gridy=0;
+		       int max=(int) stats.getMax();
+			   String po=Integer.toString(max);
+			   int min=(int) stats.getMin();
+			   String min1=Integer.toString(min);
+			   int avg=(int) stats.getAverage();
+			   String avg1=Integer.toString(avg);
+			   int k=(int) stats.getCount();
+			   String p=Integer.toString(k);
+			   int num=(int) stats.getSum();
+			   String num1=Integer.toString(num);
+			   JLabel sumser = new JLabel("Ο συνολικός  αριθμός υπηρεσιών  είναι:");
+			   sumser.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			   JLabel sumcl = new JLabel("Ο συνολικός  αριθμός επισκεπτών  είναι:");
+			   sumcl.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			   JLabel maxnum = new JLabel("Η υπηρεσία με την μεγαλύτερη ζήτηση συγκέντρωσε μέγιστο αριθμό επισκεπτών:");
+		       maxnum.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			   JLabel minnum = new JLabel("Η υπηρεσία με την μικρότερη ζήτηση συγκέντρωσε ελάχιστο αριθμό επισκεπτών:");
+			   minnum.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			   JLabel average = new JLabel("Ο μέσος όρος επισκεπτών από όλες τις υπηρεσίες είναι:");
+			   average.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+		       panel.add(sumser, constr);
+		       constr.gridx=1; 
+		       panel.add(new JButton(p),constr);
+		       constr.gridx=0; constr.gridy=1;
+		       panel.add(sumcl, constr);
+		       constr.gridx=1; 
+		       panel.add(new JButton(num1),constr);
+		       constr.gridx=0; constr.gridy=2;
+		       panel.add(maxnum, constr);
+		       constr.gridx=1; 
+		       panel.add(new JButton(po),constr);
+		       constr.gridx=0; constr.gridy=3;
+		       panel.add(minnum, constr);
+		       constr.gridx=1;
+		       panel.add(new JButton(min1),constr);
+		       constr.gridx=0; constr.gridy=4;
+		       panel.add(average, constr);
+		       constr.gridx=1;
+		       panel.add(new JButton(avg1),constr);
+		       constr.gridx=0; constr.gridy=5;
+		       constr.gridwidth = 1;
+		       mainPanel.add(headingPanel);
+		       mainPanel.add(panel);
+		       frame.add(mainPanel);
+		       frame.pack();
+		       frame.setSize(600, 600);
+		       frame.setLocationRelativeTo(null);
+		       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		       frame.setVisible(true);
+	       }
+		   public static void evaluationResults() throws Exception {
+		      //αξιολογηση διαγνωστικου κέντρου
+		       double [] mo = new double [5];
+		       double max2 = 0;
+		       double min2 = 0;
+		       int answer=0;
+		       int answer2=0;
+		       int [] sum = { 1000, 1020,800,700,900};
+		       JFrame frame3= new JFrame("Στατιστικά");
+		       frame3.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+		       JPanel mainPanel3 = new JPanel();
+		       mainPanel3.setLayout(new BoxLayout(mainPanel3, BoxLayout.Y_AXIS));
+		       JPanel headingPanel3 = new JPanel();
+		       JLabel headingLabel3 = new JLabel("Αξιολόγηση διαγνωστικού κέντρου");
+		       headingLabel3.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+		       headingPanel3.add(headingLabel3);
+		       JPanel panel3 = new JPanel(new GridBagLayout());
+		       GridBagConstraints constr3 = new GridBagConstraints();
+		       constr3.anchor = GridBagConstraints.EAST;
+		       constr3.insets = new Insets(5, 5, 5, 5); 
+		       constr3.gridx=0;
+		       constr3.gridy=0;
+		       int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+		       IntStream stream = IntStream.of(array);
+			   IntSummaryStatistics stats =stream.summaryStatistics();
+		       for(int j=0;j<4;j++) {
+		    	   //για καθε ερωτηση απο τον πινακα των σαμ υπολογιζει τον μεσο όρο κάθε απαντησης
+		    	   mo[j] = sum[j] / stats.getSum();
+			       String m=Double.toString(mo[j]);
+			       JLabel mc = new JLabel("Ο μέσος όροσ στην ερώτηση"+(j+1)+":");
+			       mc.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14)); 
+			       panel3.add(mc,constr3);
+			       constr3.gridx=1;  
+		           panel3.add(new JButton(m),constr3);
+		           constr3.gridx=0; constr3.gridy=j+1;
+		           constr3.gridwidth = 2;
+		           constr3.anchor = GridBagConstraints.WEST;
+		           mainPanel3.add(headingPanel3);
+		           mainPanel3.add(panel3);
+		           frame3.add(mainPanel3);
+		           frame3.pack();
+		           frame3.setSize(600, 600);
+		           frame3.setLocationRelativeTo(null);
+		           frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+			       frame3.setVisible(true);
+			       
+			       if (mo[j]>max2) {
+		    		   max2 = mo[j];
+		    		   answer = j+1;
+		    	   }
+		    	   if (mo[j]<min2) {
+		    		   min2 = mo[j];
+		    		   answer2 = j+1;
+		    	   }
+		        }
+		        String fp = Double.toString(max2);
+		        String apa=Integer.toString(answer);
+		        String kp = Double.toString(min2);
+		        String apa2 =Integer.toString(answer2);
+	            JLabel jk = new JLabel("Η ερώτηση που συγκέντρωσε κατά μέσο όρο την χαμηλότερη βαθμολογία είναι η:"+apa2+" με ελάχιστο μέσο όρο απάντησης");
+		        jk.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+	            JLabel xt = new JLabel("Η ερώτηση που συγκέντρωσε κατά μέσο όρο την υψηλότερη βαθμολογία είναι η: "+apa+" με μέγιστο μέσο όρο απάντησης");
+	            xt.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+	            panel3.add(jk, constr3);
+		        constr3.gridx=5; 
+		        panel3.add(new JButton(kp),constr3);
+		        constr3.gridx=0; constr3.gridy=6;
+		        panel3.add(xt, constr3);
+		        constr3.gridx=5; 
+		        panel3.add(new JButton(fp),constr3);
+		        
+		        constr3.gridwidth = 20;
+		        constr3.gridheight=10;
+		        constr3.anchor = GridBagConstraints.CENTER;
+		        frame3.setVisible(true);
+		   }
+			private static void servicesResults() {
+				// TODO Auto-generated method stub
+				JFrame frame1= new JFrame("Στατιστικά");
+		        frame1.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			    JPanel mainPanel1 = new JPanel();
+			    mainPanel1.setLayout(new BoxLayout(mainPanel1, BoxLayout.Y_AXIS));
+			    JPanel headingPanel1 = new JPanel();
+			    JLabel headingLabel1 = new JLabel("Σχετική συχνότητα επί της εκατό ανά υπηρεσία (f%)");
+			    headingLabel1.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			    headingPanel1.add(headingLabel1);
+			    JPanel panel1 = new JPanel(new GridBagLayout());
+			    GridBagConstraints constr1 = new GridBagConstraints();
+			    constr1.anchor = GridBagConstraints.EAST;
+			    constr1.insets = new Insets(10, 10, 10, 10); 
+			    constr1.gridx=0;
+			    constr1.gridy=0;
+			    JFrame frame2= new JFrame("Στατιστικά");
+			    frame2.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			    JPanel mainPanel2 = new JPanel();
+			    mainPanel2.setLayout(new BoxLayout(mainPanel2, BoxLayout.Y_AXIS));
+			    JPanel headingPanel2 = new JPanel();
+			    JLabel headingLabel2 = new JLabel("Σχετική συχνότητα επί της εκατό ανά υπηρεσία (f%)");
+			    headingPanel2.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			    headingPanel2.add(headingLabel2);
+			    JPanel panel2 = new JPanel(new GridBagLayout());
+			    GridBagConstraints constr2 = new GridBagConstraints();
+			    constr2.anchor = GridBagConstraints.EAST;
+			    constr2.insets = new Insets(10, 10, 10, 10); 
+			    constr2.gridx=0;
+			    constr2.gridy=0;
+			    int []array={35,48,33,13,27,29,50,75,45,15,54,20,13,25,36,39,16,13,27,20,13,27};
+			    IntStream stream = IntStream.of(array);
+				IntSummaryStatistics stats =stream.summaryStatistics();
+				double maxf=0;
+				double minf=(array[0] /(double) stats.getSum())*100;
+		        for (int i=0;i<=21;i++) {
+		        	 double q = array[i] /((double) stats.getSum())*100;
+			         String doubl = df2.format(q);
+			         if (i>=12) {
+			        	    JLabel wqr = new JLabel("σχετική συχνότητα (f%) για την υπηρεσία:"+(i+1));
+					        wqr.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			        	    panel2.add(wqr,constr2);
+				            constr2.gridx=1; 
+				            panel2.add(new JButton(doubl),constr2);
+				            constr2.gridx=0; constr2.gridy=i+1;
+				            constr2.gridwidth = 2;
+				            constr2.anchor = GridBagConstraints.WEST;
+				            mainPanel2.add(headingPanel2);
+				            mainPanel2.add(panel2);
+				            frame2.add(mainPanel2);
+				            frame2.pack();
+				            frame2.setSize(1000, 1000);
+				            frame2.setLocationRelativeTo(null);
+				            frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				        
+			          } else {
+			            	JLabel wqr = new JLabel("σχετική συχνότητα (f%) για την υπηρεσία:"+(i+1));
+				            wqr.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			                panel1.add(wqr,constr1);
+			                constr1.gridx=1; 
+			                panel1.add(new JButton(doubl),constr1);
+			                constr1.gridx=0; constr1.gridy=i+1;
+			                constr1.gridwidth = 2;
+			                constr1.anchor = GridBagConstraints.WEST;
+			                mainPanel1.add(headingPanel1);
+			                mainPanel1.add(panel1);
+			                frame1.add(mainPanel1);
+			                frame1.pack();
+			                frame1.setSize(1000, 1000);
+			                frame1.setLocationRelativeTo(null);
+			                frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			                frame2.setVisible(true);
+			                frame1.setVisible(true);
+			          }
+		    	      if (array[i] /(double) stats.getSum()*100 > maxf){
+		    	    	  maxf=array[i] /(double) stats.getSum()*100;
+		    	      }
+		    	      if (array[i] /(double) stats.getSum()*100 < minf){
+		    	    	  minf = array[i] /(double) stats.getSum()*100;
+		    	      }
+		            }
+		    	      String nb=df2.format(maxf);
+			          String bn=df2.format(minf);
+			          JLabel c = new JLabel("Η μέγιστη σχετική συχνότητα(f%) είναι :");
+			          c.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			          JLabel ct = new JLabel("Η ελάχιστη σχετική συχνότητα(f%) είναι:");
+			          ct.setFont(new Font( Font.SANS_SERIF,Font.ITALIC,14));
+			          panel2.add(c, constr2);
+			          constr2.gridx=1; 
+			          panel2.add(new JButton(nb),constr2);
+			          constr2.gridx=0; constr2.gridy=30;
+			          panel2.add(ct, constr2);
+			          constr2.gridx=1; 
+			          panel2.add(new JButton(bn),constr2);
+			          constr2.gridwidth = 30;
+			          constr2.gridheight=40;
+			          constr2.anchor = GridBagConstraints.CENTER;
+	        }
+			public void generalResults(Stage primaryStage) throws Exception {
+				// TODO Auto-generated method stub
+		    }
+			 public static void main(String[] args) throws Exception {
+				  int asd = sc.nextInt();
+				  
+			      while (asd == 1 || asd ==2 || asd==3 || asd == 4) {
+			       if (asd == 1) {
+			    	   Statistics.generalResults();
+			       } else if ( asd == 2) {
+			    	   servicesResults();
+			       } else if (asd == 3) {
+			    	   Statistics.evaluationResults();
+			       } else if (asd == 4) {
+			    	    launch(args);
+			       }
+			       asd = sc.nextInt();
+				  } 
+			
+			    }
+}
+	
