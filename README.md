@@ -5,9 +5,11 @@ This is a useful app for every health center. It provides functions both for the
 
 #REQUIREMENTS
 
-* You should have our GitHub repository downloaded on your computer( https://github.com/marlenachatzigrigoriou/programming2 ).
-* You should have all the .txt files ,provided on our repository, saved.
-* You should have the .class files saved too.
+* You should have our GitHub repository downloaded on your computer (https://github.com/marlenachatzigrigoriou/diagnostic_center).
+* You should have all the .txt files ,provided on our repository, saved (find them in "files" commit).
+* You should have the necessary .java files saved too (provided in the "src" commit).
+* You should have installed Java compiler on your PC.
+* You should have installed JUnit on your PC.
 
 
 #INSTALLING
@@ -18,6 +20,6 @@ This is a useful app for every health center. It provides functions both for the
 
 3)Extract the zip file you downloaded (our GitHub repository) in the folder you created.
 
-4)Open your command line and go inside the file of our repository you downloaded (inside the folder on your Desktop). In this file you will see all our classes and required files.
+4)Open your command line and go inside the folder of our repository you downloaded. In this folder you will see all our classes and required files.
 
-5)Copy and execute the following command: 
+5)Copy and execute the following commands: 
