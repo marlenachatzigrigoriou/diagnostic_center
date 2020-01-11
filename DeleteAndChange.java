@@ -61,12 +61,12 @@ public class DeleteAndChange {
 			boolean error = true;
 			while (error) {
 				try {
-					if (calendar[month][day].getTable()[k][j].toLowerCase().contains(String.valueOf(cell))) {
+					while (calendar[month][day].getTable()[k][j].toLowerCase().contains(String.valueOf(cell))) {
 
 						calendar[month][day].getTable()[k][j] = "      ΟΧΙ";
 						k++;
-					} else {
-						exists = false;
+					}
+					exists = false;
 					}
 					error = false;
 				} catch (ArrayIndexOutOfBoundsException e) {
