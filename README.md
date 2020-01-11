@@ -1,9 +1,9 @@
-#DIAGNOSTIC CENTER
+# DIAGNOSTIC CENTER
 
 This is a useful app for every health center. It provides functions both for the client and the business. Every client can book an appointment, delete an existing one or change it. He can also evaluate his experience in the Medical Center as well as his experinece of booking an appointment using the app. Now the business can manage its employees (recruitment of an employee, dismissal etc) and services (add new service, delete etc). Also, the app extracts several statistic results ,using the clients' ratings, about the services.
 
 
-##REQUIREMENTS
+## REQUIREMENTS
 
 * You should have our GitHub repository downloaded on your computer (https://github.com/marlenachatzigrigoriou/diagnostic_center).
 * You should have all the .txt files ,provided on our repository, saved (find them in "files" commit).
@@ -12,7 +12,7 @@ This is a useful app for every health center. It provides functions both for the
 * You should have installed JUnit on your PC.
 
 
-##INSTALLING
+## INSTALLING
 
 1)Download our GitHub repository on your computer. 
 
