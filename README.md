@@ -15,9 +15,19 @@ This is a useful app for every health center. It provides functions both for the
 ## INSTALLING
 
 1)Clone or download our GitHub repository on your computer. 
+
 2)Extract the zip file you downloaded (our GitHub repository) and save them in a folder on your computer.
+
 3)Keep only the arcives that belong to src folder (delete the other files).
-4)Open your command line and go inside the folder of our repository you downloaded. In the src folder of this folder you will see all our classes and required files.
-5)To create a .jar requires to create a .mf file.
-    * create an <name>.mf file in the ..<your folder>\src 
-    * this will contain 
+
+4)Open your command line and go inside the folder of our repository you downloaded. In the src folder of this folder you will see all our      classes and required files.
+
+5)To create the .jar, write the following command:
+      
+      jar cmf manifest.mf "Diagnostic Center.jar" αιματολογικές.txt ακτινογραφίες.txt 
+      ανοσολογικές.txt "αξονικές τομογραφίες.txt" αλλεργιολογικές.txt βιοχημικές.txt
+      γαστρεντερολογικές.txt γυναικολογικές.txt καλλιέργειες.txt καρδιολογικές.txt 
+      "μαγνητικές τομογραφίες.txt" μαστογραφίες.txt μικροβιολογικές.txt νευρολογικές.txt 
+      ορμονικές.txt ούρων.txt πακέτα.txt "προγεννητικός έλεγχος.txt" υπέρηχοι.txt checkup.txt
+      doppler.txt triplex.txt Client.class CreateObjects.class DeleteAndChange.class Employees.class 
+      EnterAppointment.class Evaluation.class Main.class Menu.class Services.class Statistics.class Table.class
