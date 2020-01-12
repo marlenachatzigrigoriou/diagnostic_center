@@ -18,7 +18,7 @@ This is a useful app for every health center. It provides functions both for the
 
 2)Extract the zip file you downloaded (our GitHub repository) and save them in a folder on your computer.
 
-3)Keep only the arcives that belong to src folder (delete the other files).
+3)Keep only the archives that belong to src folder (delete the other files).
 
 4)Open your command line and go inside the folder of our repository you downloaded. In the src folder of this folder you will see all our      classes and required files.
 
