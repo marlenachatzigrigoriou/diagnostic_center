@@ -1,0 +1,10 @@
+Check up για νήπια,35,checkup,10
+Check up για παιδιά,40,checkup,15
+Premium check-up για άνδρες,50,checkup,15
+Premium check-up για γυναίκες,30,checkup,23
+Απλό αιματολογικό check up,20,checkup,6
+Βασικό check up για άνδρες,40,checkup,15
+Βασικό check up για άνδρες > 50 ετών,54,checkup,10
+Βασικό check up για γυναίκες,65,checkup,12
+Βασικό check-up για γυναίκες & άνδρες,30,checkup,13
+Μini check-up,30,checkup,45
