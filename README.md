@@ -5,7 +5,7 @@ This is a useful app for every health center. It provides functions both for the
 
 ## REQUIREMENTS
 
-* You should have our GitHub repository downloaded on your computer (https://github.com/marlenachatzigrigoriou/diagnostic_center).
+* You should have our GitHub repository downloaded on your computer https://github.com/marlenachatzigrigoriou/diagnostic_center.
 * You should have all the .txt files ,provided on our repository, saved (find them in "files" commit).
 * You should have the necessary .java files saved too (provided in the "src" commit).
 * You should have installed Java compiler on your PC.
