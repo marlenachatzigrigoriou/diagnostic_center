@@ -9,7 +9,7 @@ This is a useful app for every health center. It provides functions both for the
 * You should have all the .txt files ,provided on our repository, saved (find them in "src" commit).
 * You should have the necessary .java files saved (provided in the "src" commit).
 * You should have installed Java compiler on your PC.
-* You should have installed JUnit on your PC.
+* You should have installed JUnit (4 and 5) on your PC.
 
 
 ## INSTALLING
@@ -29,3 +29,6 @@ This is a useful app for every health center. It provides functions both for the
       jar cmf manifest.mf "Diagnostic Center.jar" *.txt *.class
       
 6)If you want to run the tests:
+      1. Copy our classes (.java) (including the test classes) and .txt files at Eclipse.
+      2. Open the test class you want to run.
+      3. Right click on it -> choose Run As -> JUnit Test
