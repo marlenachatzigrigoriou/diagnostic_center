@@ -20,9 +20,9 @@ This is a useful app for every health center. It provides functions both for the
 
 3)Keep only the archives that belong to src folder (delete the other files if you want to).
 
-4)Open your command line and go inside the folder of our repository you downloaded. In the src folder of this folder you will see all our      classes and required files.
+4)Open your command line and go inside the folder of our repository you downloaded. In the src folder of repository's folder you will see all our      classes (<name>.java) and required files (<name>.txt, manifest.mf).
 
-5)To create the .jar, insert the following commands:
+5)To create the .jar, insert the following commands on your command line:
       
       javac *.java
       
