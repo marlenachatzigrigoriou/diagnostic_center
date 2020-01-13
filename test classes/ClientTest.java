@@ -11,7 +11,6 @@ public class ClientTest {
 	public void QuestionsAboutClientTest() {
 		
 		Client.questionsAboutClient();
-		
 		Client.addClient(c1);
 		Client.addClient(c2);
 		Assert.assertNotNull("array c shouldn't be null", Client.clients);
