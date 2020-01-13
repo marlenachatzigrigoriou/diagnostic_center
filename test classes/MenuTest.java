@@ -34,7 +34,6 @@ public class MenuTest {
 
 		boolean result = Menu.filterAndPrintServices("αιμ","αιματολογικές");
 
-
 		Assert.assertTrue("result should be true", result);
 
 
