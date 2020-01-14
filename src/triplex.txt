@@ -1,0 +1,38 @@
+TRIPLEX Αγγείων,25,triplex,10
+Triplex αγγείων πέους με πρόκληση τεχνητής στύσης,15,triplex,10
+Triplex αρτηριών και φλεβών κάτω άκρων,25,triplex,10
+TRIPLEX Καρδιάς,15,triplex,15
+TRIPLEX Καρδιάς κατ' οίκον,20,triplex,20
+Triplex οσχέου (για παιδιά έως 12 ετών),20,triplex,20
+ΔΙΟΡΘΙΚΟ ΥΠΕΡΗΧΟΓΡΑΦΗΜΑ,20,triplex,15
+Τriplex οσχέου,10,triplex,10
+Τriplex αγγείων πέους,10,triplex,10
+Τriplex ανιούσης αορτής,10,triplex,10
+Τriplex αρτηριών κάτω άκρου,10,triplex,10
+Τriplex αρτηριών κάτω άκρων αμφοτέρων,10,triplex,20
+Τriplex αρτηριών άνω άκρου,10,triplex,20
+Τriplex αρτηριών άνω άκρων αμφοτέρων,10,triplex,15
+Τriplex ήπατος,15,triplex,15
+Τriplex θυρεοειδούς,15,triplex,150
+Τriplex θωρακικής αορτής,20,triplex,30
+Τriplex ιγνυακών αρτηριών,15,triplex,35
+Τriplex καρωτίδων,20,triplex,30
+Τriplex κοιλιακής αορτής,15,triplex,35
+Τriplex κοιλιακής αορτής & αρτηριών κάτω άκρων,20,triplex,20
+Τriplex κοιλιακής αορτής & λαγονίων αρτηριών,20,triplex,40
+Τriplex λαγονίων & αρτηριών κάτω άκρων,20,triplex,15
+Τriplex λαγονίων αρτηριών,30,triplex,10
+Τriplex λαγονίων αρτηριών,30,triplex,15
+Τriplex λαγονίων φλεβών,30,triplex,30
+Τriplex νεφρικών αρτηριών,30,triplex,35
+Τriplex πεϊκών αγγείων,10,triplex,20
+Τriplex πυλαίας φλέβας & ηπατικών φλεβών,20,triplex,25
+Τriplex σπηλαιοπυλαίου άξονα,20,triplex,25
+Τriplex σπηλαιοπυλαίου άξονος,20,triplex,10
+Τriplex τραχήλου,20,triplex,10
+Τriplex υποκλείδιων αρτηριών και σπονδυλοβασικών,15,triplex,5
+Τriplex υποκλείδιων και μασχαλιαίων αγγείων,15,triplex,25
+Τriplex φλεβών άνω άκρου,15,triplex,20
+Τriplex φλεβών άνω άκρων αμφωτέρων,35,triplex,20
+Τriplex φλεβών κάτω άκρου,20,triplex,35
+Τriplex φλεβών κάτω άκρων αμφωτέρων,15,triplex,25
