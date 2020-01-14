@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+/**
+ * Date 15-January-2020
+ *
+ * @author 8180041, 8180150, 8180111, 8180108, 8180073, 8180070, 8180074,
+ *         8180152
+ *
+ *         This class manages the services that the medical center provides its
+ *         clients.
+ *
+ */
+public class Services {
+
+	// Lists of examinations of every category
+	static ArrayList<Services> aimatologikes = new ArrayList<Services>();
+	static ArrayList<Services> aktinografies = new ArrayList<Services>();
+	static ArrayList<Services> allergiologikes = new ArrayList<Services>();
+	static ArrayList<Services> anosologikes = new ArrayList<Services>();
+	static ArrayList<Services> axonikestomogr = new ArrayList<Services>();
+	static ArrayList<Services> biochimikes = new ArrayList<Services>();
+	static ArrayList<Services> gastrenterologikes = new ArrayList<Services>();
+	static ArrayList<Services> gynaikologikes = new ArrayList<Services>();
+	static ArrayList<Services> ourwn = new ArrayList<Services>();
+	static ArrayList<Services> kalliergeies = new ArrayList<Services>();
+	static ArrayList<Services> kardiologikes = new ArrayList<Services>();
+	static ArrayList<Services> magnitikestomogr = new ArrayList<Services>();
+	static ArrayList<Services> mastografies = new ArrayList<Services>();
+	static ArrayList<Services> mikroviologikes = new ArrayList<Services>();
+	static ArrayList<Services> neurologikes = new ArrayList<Services>();
+	static ArrayList<Services> ormonikes = new ArrayList<Services>();
+	static ArrayList<Services> progennitikos = new ArrayList<Services>();
+	static ArrayList<Services> yperichoi = new ArrayList<Services>();
+	static ArrayList<Services> checkup = new ArrayList<Services>();
+	static ArrayList<Services> doppler = new ArrayList<Services>();
+	static ArrayList<Services> triplex = new ArrayList<Services>();
+	static ArrayList<Services> paketa = new ArrayList<Services>();
+
+	static JFrame fr;
+
+	static ArrayList<ArrayList<Services>> eidikotitesoles = new ArrayList<ArrayList<Services>>();
+
+	static ArrayList<String> eidikotites = new ArrayList<String>();
+
+	/**
+	 * Name of examination
+	 */
+	private String name;
+	/**
+	 * Duration of the examination
+	 */
+	private int duration;
+	/**
+	 * Category in which the examination belongs
+	 */
+	private String category;
+	/**
+	 * The cost of the examination
+	 */
+	private double cost;
+
+	/**
+	 * Class Constructor
+	 */
+	public Services(String name, int duration, String category, double cost) {
+		super();
+		this.name = name;
+		this.duration = duration;
+		this.category = category;
+		this.cost = cost;
+	}
+
+	@Override
+	public String toString() {
+		return "The examination: " + name + " lasts " + duration + " minutes" + ", belongs to category " + category
+				+ "and costs " + cost + "$ \n";
+	}
