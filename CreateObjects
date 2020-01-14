@@ -1,0 +1,54 @@
+/**
+	 * This method reads a file containing the information of the employees of the
+	 * medical center, creates an object of type Employees and adds it in the list
+	 * with all the other employees.
+	 *
+	 * @param filename = the name of the file we want to read
+	 */
+	public static void createEmployees(String filename) {
+
+		File file = new File(filename);
+
+		BufferedReader br = null;
+		try {
+
+			String name1 = null;
+			String category1 = null;
+			int h = 1;
+			int i = 1;
+			int j = 2;
+
+			br = new BufferedReader(new FileReader(file));
+			String line;
+
+			while ((line = br.readLine()) != null) {
+
+				StringTokenizer tokenizer = new StringTokenizer(line, ",");
+				Employees object;
+
+				while (tokenizer.hasMoreTokens()) {
+					if (h == i) {
+						name1 = tokenizer.nextToken();
+						i = i + 2;
+						h++;
+					} else if (h == j) {
+						category1 = tokenizer.nextToken();
+						h++;
+					}
+					if (h == (j + 1)) {
+						object = new Employees(name1, category1);
+						Employees.listEmployees(object);
+
+						j = j + 2;
+					}
+
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
