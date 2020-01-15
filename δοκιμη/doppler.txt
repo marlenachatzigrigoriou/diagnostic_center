@@ -1,9 +1,0 @@
-Doppler αρτηριών κάτω άκρων,15,doppler,15
-Doppler ηπατικών αγγείων,15,doppler,20
-Doppler Θυρεοειδούς,10,doppler,15
-Doppler καρωτίδων,10,doppler,20
-Doppler Μαστών,10,doppler,20
-Doppler όσχεου,15,doppler,20
-Doppler σπληνοπυλαίου άξονα,15,doppler,	25
-Doppler φλεβών κάτω άκρων,20,doppler,15
-Doppler ωοθηκών,20,doppler,20
