@@ -31,7 +31,7 @@ This is a useful app for every health center. It provides functions both for the
 6)If you want to run the tests
 (you should have installed the Eclipse Java software):
 
-      1. Copy the files of "src" and "Test files" folders at Eclipse
+      1. Copy the files of "src" and "test classes" folders at Eclipse
       
       2. Open the test class you want to run
       
