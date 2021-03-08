@@ -72,7 +72,7 @@ public class DeleteAndChange {
 	 */
 	public static String deleteAppointment(int[] del, Table[][] calendar) {
 
-		String answer = "Ï×É";
+		String answer = "ï¿½ï¿½ï¿½";
 
 		String category = "";
 		boolean found = false;
@@ -122,7 +122,7 @@ public class DeleteAndChange {
 					} else {
 
 						JOptionPane.showMessageDialog(frame, "Your appointment has been deleted successfully");
-						answer = "Ï×É";
+						answer = "ï¿½ï¿½ï¿½";
 						Menu.sumMinus(category);
 					}
 					error = false;
@@ -156,14 +156,14 @@ public class DeleteAndChange {
 
 		boolean exists = true;
 
-		do { // WHILE LOOP PUTS "NO" INSIDE THE CELLS THAT CONÔÁINS CLIENT'S VALIDCODE
+		do { // WHILE LOOP PUTS "NO" INSIDE THE CELLS THAT CONï¿½ï¿½INS CLIENT'S VALIDCODE
 			boolean error = true;
 			while (error) {
 				try {
 					if (calendar[month][day].getTable()[line][column].toLowerCase()
 							.contains(String.valueOf(clientcode))) {
 
-						calendar[month][day].getTable()[line][column] = "      Ï×É";
+						calendar[month][day].getTable()[line][column] = "      ï¿½ï¿½ï¿½";
 						line++;
 					} else {
 						exists = false;
@@ -236,7 +236,7 @@ public class DeleteAndChange {
 	 * @return = returns a string table of size three which includes the name, the
 	 *         surname and the phone number of the client
 	 */
-	public static String[] customerÉnfo(String stringcode, int[] del2, Table[][] calendar) {
+	public static String[] customerInfo(String stringcode, int[] del2, Table[][] calendar) {
 
 		boolean flag = false;
 		String[] info2 = new String[3];
@@ -422,7 +422,7 @@ public class DeleteAndChange {
 
 					t1[1] = info[2];
 					t1[2] = info[0];
-					t1[0] = "ãéáôñïý";
+					t1[0] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 
 					String keep_doc = JOptionPane.showInputDialog(frame,
 							"Would you like to keep the same doctor for the new appointment? \nYES / NO");
